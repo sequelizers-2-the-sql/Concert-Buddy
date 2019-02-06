@@ -2,7 +2,9 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-//const routes = require("./routes");
+const auth = require('./server/routes/auth');
+
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -13,12 +15,17 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
-// Add routes, both API and view
-//app.use(routes);
+  // Add routes, both API and view
+  //app.use(routes);
 
 // Connect to the Mongo DB
-//mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist", { useNewUrlParser: true });
-
+//localCB is local Concert Buddy database
+//mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/localCB", { useNewUrlParser: true });
+const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://127.0.0.1/mern-secure', { promiseLibrary: require('bluebird') })
+  .then(() =>  console.log('Database connection succesful'))
+  .catch((err) => console.error(err));
 
 // Send every other request to the React app
 // Define any API routes before this runs
