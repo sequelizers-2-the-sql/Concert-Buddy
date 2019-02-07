@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 //mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/localCB", { useNewUrlParser: true });
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://127.0.0.1/mern-secure', { promiseLibrary: require('bluebird') })
+mongoose.connect('mongodb://127.0.0.1/localCB', { promiseLibrary: require('bluebird') })
   .then(() =>  console.log('Database connection succesful'))
   .catch((err) => console.error(err));
 
