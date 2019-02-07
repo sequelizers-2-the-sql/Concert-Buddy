@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-const auth = require('./server/routes/auth');
+const auth = require('./routes/auth');
 
 
 
