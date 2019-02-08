@@ -6,7 +6,7 @@ export default function Navigation(props) {
     <header>
         <div class="first-header-container">
             <nav class="navbar navbar-light navbar-fixed">
-                    <h1 class="logo-nav">ConcertBuddy</h1>
+                    <h1 class="logo-nav">ConcertBuddy (this is in Navigation.js file</h1>
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a class="nav-link logo-nav" href="/home">home</a>
@@ -15,7 +15,10 @@ export default function Navigation(props) {
                         <a class="nav-link logo-nav" href="/myevents">my events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link logo-nav" href="/login">logout</a>
+                        <a class="nav-link logo-nav" href="/login">login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link logo-nav" href="/logout">logout</a>
                     </li>
                 </ul>
             </nav>

@@ -1,16 +1,5 @@
-// // eslint-disable-next-line
-// import React, { Component } from "react";
-
-// function Signup (){
-//   return <h1>Hello.  Please SIGN UP To Concert Buddy</h1>
-// };
-
-// export default Signup;
-
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './Login.css';
 
 class Signup extends Component {
