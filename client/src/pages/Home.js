@@ -21,6 +21,7 @@ handleFormSubmit = event => {
     API.concertZip(this.state.search)
       .then(res => {
         let events = res.data.resultsPage.results.event;
+        if (events.length > 20) {events.length = 20};
         console.log(events)
         this.setState({events: events, search: ""})
       }
@@ -29,8 +30,8 @@ handleFormSubmit = event => {
     } else if (this.state.selector === "Artist") {
       API.concertArtist(this.state.search)
         .then(res => {
-          console.log(res)
           let events = res.data.resultsPage.results.event;
+          if (events.length > 20) {events.length = 20};
           console.log(events)
           this.setState({events: events, search: ""})
         })
