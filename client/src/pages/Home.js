@@ -5,32 +5,47 @@ import Navigation from "../components/Navigation.js";
 import API from "../utils/Kick";
 import { Input, FormBtn } from "../components/SearchForm";
 import { List, ListItem } from "../components/EventList";
+import RadioButton from "../components/RadioButton";
 
 class Events extends Component {
   state = {
     events: [],
-    search: ""
+    search: "",
+    selector: ""
   };
 
 handleFormSubmit = event => {
   event.preventDefault();
-  if (this.state.search) {
+  if (this.state.search && this.state.selector) {
+    if (this.state.selector === "Zip") {
     API.concertZip(this.state.search)
       .then(res => {
-        console.log(res);
-        let array = res.data.resultsPage.results.event;
-        let events = array.splice(30);
+        let events = res.data.resultsPage.results.event;
         console.log(events)
         this.setState({events: events, search: ""})
-      
       }
       )
       .catch(err => console.log(err));
+    } else if (this.state.selector === "Artist") {
+      API.concertArtist(this.state.search)
+        .then(res => {
+          console.log(res)
+          let events = res.data.resultsPage.results.event;
+          console.log(events)
+          this.setState({events: events, search: ""})
+        })
+    }
   }
 };
 
 attendEvent = event => {
   console.log(this.state.events[event.target.value]);
+}
+
+handleRadioChange = event => {
+  this.setState({
+    selector: event.target.value
+  });
 }
 
 handleInputChange = event => {
@@ -49,6 +64,12 @@ render() {
         name="search"
         placeholder="Search"
       />
+
+      <RadioButton
+      zip={this.state.selector === "Zip"}
+      artist={this.state.selector === "Artist"}
+      change={this.handleRadioChange} 
+/>
       <FormBtn
         disabled={!(this.state.search)}
         onClick={this.handleFormSubmit}
