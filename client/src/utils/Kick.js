@@ -4,8 +4,8 @@ export default {
   concertArtist: function(artist) {
     return axios.get(`https://api.songkick.com/api/3.0/search/artists.json?apikey=5lteuiQE9y5NzSiJ&query=` + artist )
       .then((response) => {
-          let jsonResponse = JSON.parse(response);
-          let artistId = jsonResponse.resultsPage.results.artist[0].id
+          let artistId = +response.data.resultsPage.results.artist[0].id
+          console.log(artistId);
           return axios.get(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=5lteuiQE9y5NzSiJ`)
     })
   },
