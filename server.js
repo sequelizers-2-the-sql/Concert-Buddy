@@ -3,7 +3,8 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const auth = require('./routes/auth');
-
+const mongoose = require("mongoose");
+const routes = require("./routes");
 //IB adding for passport
 const passport = require('passport');
 
@@ -37,8 +38,9 @@ const authRoutes = require('./routes/auth');
 //const apiRoutes = require('./routes/api');
 app.use('/auth', authRoutes);
 //app.use('/api', apiRoutes);  
+app.use(routes);
 
-
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/finalproject", { useNewUrlParser: true });
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
