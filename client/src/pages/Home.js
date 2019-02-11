@@ -1,12 +1,12 @@
 //below is temp
 // eslint-disable-next-line
 import React, { Component } from "react";
-import Navigation from "../components/Navigation.js";
 import KICK from "../utils/Kick";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/SearchForm";
 import { List, ListItem } from "../components/EventList";
 import RadioButton from "../components/RadioButton";
+import Navigation from "../components/Navigation/Navigation"
 
 class Events extends Component {
   state = {

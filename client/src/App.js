@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import Navigation from "./components/Navigation";
-
-
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
 } from 'react-router-dom'
-
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Auth from './utils/Auth';
+import Navigation from "./components/Navigation/Navigation";
+
 
 const LoggedOutRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
@@ -52,8 +50,7 @@ class App extends Component {
 
   render() {
     return (
-        <Router>
-           
+        <Router> 
           <div>
           <Navigation />
             <PropsRoute exact path="/" component={Home} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
