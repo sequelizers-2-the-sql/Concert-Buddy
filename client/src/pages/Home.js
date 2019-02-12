@@ -6,6 +6,7 @@ import API from "../utils/API";
 import { Input, FormBtn } from "../components/SearchForm";
 import { List, ListItem } from "../components/EventList";
 import RadioButton from "../components/RadioButton";
+import { Container, Row, Col } from "../components/Container";
 class Events extends Component {
   state = {
     events: [],
@@ -67,41 +68,48 @@ class Events extends Component {
 
   render() {
     return (<>
-      <form>
-        <Input
-          value={this.state.search}
-          onChange={this.handleInputChange}
-          name="search"
-          placeholder="Search"
-        />
+      <Container>
+        <Row>
+          <Col size="md-12">
 
-        <RadioButton
-          zip={this.state.selector === "Zip"}
-          artist={this.state.selector === "Artist"}
-          change={this.handleRadioChange}
-        />
-        <FormBtn
-          disabled={!(this.state.search)}
-          onClick={this.handleFormSubmit}
-        >
-          Search
+            <form>
+              <Input
+                value={this.state.search}
+                onChange={this.handleInputChange}
+                name="search"
+                placeholder="Search"
+              />
+
+              <RadioButton
+                zip={this.state.selector === "Zip"}
+                artist={this.state.selector === "Artist"}
+                change={this.handleRadioChange}
+              />
+              <FormBtn
+                disabled={!(this.state.search)}
+                onClick={this.handleFormSubmit}
+              >
+                Search
       </FormBtn>
-      </form>
-      <List number={this.state.events.length} />
+            </form>
+            <List number={this.state.events.length} />
 
-      {this.state.events ?
-        
-        this.state.events.map((event, i) => {
-          return <>
+            {this.state.events ?
 
-            <ListItem event={event} clickHandler={this.attendEvent} key={i} />
-          </>
-        }) : (
-          <h3>No Results to Display</h3>
-        )}
-    </>
-    )
-  };
-}
+              this.state.events.map((event, i) => {
+                return <>
 
+                  <ListItem event={event} clickHandler={this.attendEvent} key={i} />
+                </>
+              }) : (
+                <h3>No Results to Display</h3>
+              )}
+            </Col>
+            </Row>
+            </Container>
+            </>
+          )
+    };
+  }
+  
 export default Events;
