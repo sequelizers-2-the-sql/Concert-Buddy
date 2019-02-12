@@ -1,48 +1,98 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './Login.css';
+import React, { Component } from 'react'
+import axios from 'axios'
 
 class Signup extends Component {
+	constructor() {
+		super()
+		this.state = {
+			username: '',
+			password: '',
+			confirmPassword: '',
 
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
-  onChange = (e) => {
-    const state = this.state
-    state[e.target.name] = e.target.value;
-    this.setState(state);
-  }
+		}
+		this.handleSubmit = this.handleSubmit.bind(this)
+		this.handleChange = this.handleChange.bind(this)
+	}
+	handleChange(event) {
+		this.setState({
+			[event.target.name]: event.target.value
+		})
+	}
+	handleSubmit(event) {
+		console.log('sign-up handleSubmit, username: ')
+		console.log(this.state.username)
+		event.preventDefault()
 
-  onSubmit = (e) => {
-    e.preventDefault();
+		//request to server to add a new username/password
+		axios.post('user', {
+			username: this.state.username,
+			password: this.state.password
+		})
+			.then(response => {
+				console.log(response)
+				if (!response.data.errmsg) {
+					console.log('successful signup')
+					this.setState({ //redirect to login page
+						redirectTo: '/login'
+					})
+				} else {
+					console.log('username already taken')
+				}
+			}).catch(error => {
+				console.log('signup error: ')
+				console.log(error)
 
-    const { username, password } = this.state;
+			})
+	}
 
-    axios.post('/api/auth/signup', { username, password })
-      .then((result) => {
-        this.props.history.push("/login")
-      });
-  }
 
-  render() {
-    const { username, password } = this.state;
-    return (
-      <div class="container">
-        <form className="form-signin" onSubmit={this.onSubmit}>
-          <h2 className="form-signin-heading">Sign Up</h2>
-          <label for="inputEmail" className="sr-only">Email address</label>
-          <input type="email" className="form-control" placeholder="Email address" name="username" value={username} onChange={this.onChange} required/>
-          <label for="inputPassword" className="sr-only">Password</label>
-          <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-        </form>
-      </div>
-    );
-  }
+render() {
+	return (
+		<div className="SignupForm">
+			<h4>Sign up</h4>
+			<form className="form-horizontal">
+				<div className="form-group">
+					<div className="col-1 col-ml-auto">
+						<label className="form-label" htmlFor="username">Username</label>
+					</div>
+					<div className="col-3 col-mr-auto">
+						<input className="form-input"
+							type="text"
+							id="username"
+							name="username"
+							placeholder="Username"
+							value={this.state.username}
+							onChange={this.handleChange}
+						/>
+					</div>
+				</div>
+				<div className="form-group">
+					<div className="col-1 col-ml-auto">
+						<label className="form-label" htmlFor="password">Password: </label>
+					</div>
+					<div className="col-3 col-mr-auto">
+						<input className="form-input"
+							placeholder="password"
+							type="password"
+							name="password"
+							value={this.state.password}
+							onChange={this.handleChange}
+						/>
+					</div>
+				</div>
+				<div className="form-group ">
+					<div className="col-7"></div>
+					<button
+						className="btn btn-primary col-1 col-mr-auto"
+						onClick={this.handleSubmit}
+						type="submit"
+					>Sign up</button>
+				</div>
+			</form>
+		</div>
+
+	)
+}
 }
 
-export default Signup;
+export default Signup
