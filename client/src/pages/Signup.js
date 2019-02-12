@@ -1,16 +1,5 @@
-// // eslint-disable-next-line
-// import React, { Component } from "react";
-
-// function Signup (){
-//   return <h1>Hello.  Please SIGN UP To Concert Buddy</h1>
-// };
-
-// export default Signup;
-
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './Login.css';
 
 class Signup extends Component {
@@ -33,7 +22,7 @@ class Signup extends Component {
 
     const { username, password } = this.state;
 
-    axios.post('/api/auth/register', { username, password })
+    axios.post('/api/auth/signup', { username, password })
       .then((result) => {
         this.props.history.push("/login")
       });
@@ -49,7 +38,7 @@ class Signup extends Component {
           <input type="email" className="form-control" placeholder="Email address" name="username" value={username} onChange={this.onChange} required/>
           <label for="inputPassword" className="sr-only">Password</label>
           <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
         </form>
       </div>
     );

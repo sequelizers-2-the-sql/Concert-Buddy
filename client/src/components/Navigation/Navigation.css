@@ -1,0 +1,17 @@
+.navbar{
+    background-color: #4e606e;
+    font-family: 'Major Mono Display', monospace;
+
+}
+
+.links {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-link {
+    color: whitesmoke;
+}
+
+.nav-link:hover {
+    color: whitesmoke;
+}

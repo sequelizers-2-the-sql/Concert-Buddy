@@ -3,21 +3,23 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
-
 const UserSchema = new Schema({
     firstName: {
         type: String,
-        allowNull: false,
+        // allowNull: false,
+        allowNull: true,
         defaultValue: "fakeFirstName"
       },
       lastName: {
         type: String,
-        allowNull: false,
+        // allowNull: false,
+        allowNull: true,
         defaultValue: "fakeLastName"
       },
       email: {
         type: String,
-        allowNull: false,
+        // allowNull: false,
+        allowNull: true,
         unique: true
         // validate: {
         //   isEmail: true
@@ -30,7 +32,8 @@ const UserSchema = new Schema({
       },
       zipcode: {
         type: String,
-        allowNull: false
+        // allowNull: false
+        allowNull: true,
       }
 });
 
