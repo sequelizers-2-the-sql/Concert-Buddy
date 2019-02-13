@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import {
   BrowserRouter as Router,
   Route,
@@ -7,59 +8,81 @@ import {
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Auth from './utils/Auth';
-import Navigation from "./components/Navigation/Navigation";
+//import Auth from './utils/Auth';
+//import Navbar from './components/navbar'
+import Navbar from "./components/Navigation/Navigation";
 
 
-const LoggedOutRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    Auth.isUserAuthenticated() ? (
-      <Redirect to={{
-        pathname: '/',
-        state: { from: props.location }
-      }}/>
-    ) : (
-      <Component {...props} {...rest} />
-    )
-  )}/>
-)
-
-const PropsRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    <Component {...props} {...rest} />
-  )}/>
-)
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super()
     this.state = {
-      authenticated: false
+      loggedIn: false,
+      username: null
     }
-  };
 
-  componentDidMount() {
-    // check if user is logged in on refresh
-    this.toggleAuthenticateStatus()
+    this.getUser = this.getUser.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.updateUser = this.updateUser.bind(this)
   }
 
-  toggleAuthenticateStatus() {
-    // check authenticated status and toggle state based on that
-    this.setState({ authenticated: Auth.isUserAuthenticated() })
+  componentDidMount() {
+    this.getUser()
+  }
+
+  updateUser (userObject) {
+    this.setState(userObject)
+  }
+
+  getUser() {
+    axios.get('/user/').then(response => {
+      console.log('Get user response: ')
+      console.log(response.data)
+      if (response.data.user) {
+        console.log('Get User: There is a user saved in the server session: ')
+
+        this.setState({
+          loggedIn: true,
+          username: response.data.user.username
+        })
+      } else {
+        console.log('Get user: no user');
+        this.setState({
+          loggedIn: false,
+          username: null
+        })
+      }
+    })
   }
 
   render() {
     return (
-        <Router> 
-          <div>
-          <Navigation />
-            <PropsRoute exact path="/" component={Home} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
-            <LoggedOutRoute path="/login" component={Login} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
-            <LoggedOutRoute path="/signup" component={Signup}/>
-            {/* <Route path="/logout" component={Logout}/> */}
-          </div>
+      <div className="App">
+   
+        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+        {/* greet user if logged in: */}
+        {this.state.loggedIn &&
+          <p>You are logged in, {this.state.username}!!!!</p>
+        }
+        {/* Routes to different components */}
+        <Route
+          exact path="/"
+          component={Home} />
+        <Route
+          path="/login"
+          render={() =>
+            <Login
+              updateUser={this.updateUser}
+            />}
+        />
+        <Route
+          path="/signup"
+          render={() =>
+            <Signup/>}
+        />
 
-        </Router>
+      </div>
     );
   }
 }
