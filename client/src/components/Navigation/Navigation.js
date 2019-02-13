@@ -15,7 +15,7 @@ export default function Navigation(props) {
                         <a class="nav-link logo-nav" href="/myevents">my events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link logo-nav" href="/login">logout</a>
+                        <a class="nav-link logo-nav" href="/use/logout">logout</a>
                     </li>
                 </ul>
     </nav>
