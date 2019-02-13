@@ -29,7 +29,7 @@ export function ListItem(props) {
           </ul>
         </div>
         <div className="col-xs-12 col-sm-12 col-md-7 excerpet">
-          <h3 onClick={()=>{props.clickHandler(props.event)}}><a href="#" title="">Click Here</a></h3>
+          <h3 onClick={()=>{props.clickHandler(props.event)}}><a href="api/concert" title="">Click Here</a></h3>
           <p>Click this{props.event.displayName}</p>
           <span className="plus"><a href="#" title="Lorem ipsum"><i className="glyphicon glyphicon-plus"></i></a></span>
         </div>
