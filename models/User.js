@@ -11,6 +11,7 @@ const userSchema = new Schema({
 
 })
 
+
 // Define schema methods
 userSchema.methods = {
 	checkPassword: function (inputPassword) {

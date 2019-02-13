@@ -1,26 +1,25 @@
-let mongoose = require("mongoose");
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+mongoose.promise = Promise
 
-let Schema = mongoose.Schema;
+// Define userSchema
+const concertSchema = new Schema({
 
-let ConcertSchema = new Schema({
-    artist: String,
-    venue: String,
-    date: Date,
-    time: {
-        type: String,
-        default: "TBD"
-    },
-    city: String,
-    latitude: Number,
-    longitude: Number,
-    attendess: [
-        {
-        type: Schema.Types.ObjectId,
-        ref: "User"    
-        }
-    ]
-});
+	artist: { type: String, unique: false, required: false },
+	venue: { type: String, unique: false, required: false },
+	date: { type: Date, unique: false, required: false },
+	time: { type: String, unique: false, required: false },
+	city: { type: String, unique: false, required: false },
+	latitude: { type: Number, unique: false, required: false },
+	longitude: { type: Number, unique: false, required: false },
+	attendess: [
+		{
+		type: Schema.Types.ObjectId,
+		ref: "User", unique: false, required: false    
+		}
+]
 
-let Concert = mongoose.model("Concert", ConcertSchema);
+})
 
-module.exports = Concert;
+const Concert = mongoose.model('Concert', concertSchema)
+module.exports = Concert

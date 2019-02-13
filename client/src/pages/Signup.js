@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+//IB axiois is a library for making http requests from React.
 import axios from 'axios'
 
 class Signup extends Component {
@@ -12,7 +13,8 @@ class Signup extends Component {
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
-	}
+  }
+  //IB handleChange function sets the state to the text that is typed for username and password.
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
@@ -24,7 +26,7 @@ class Signup extends Component {
 		event.preventDefault()
 
 		//request to server to add a new username/password
-		axios.post('user', {
+		axios.post('/user/  ', {
 			username: this.state.username,
 			password: this.state.password
 		})

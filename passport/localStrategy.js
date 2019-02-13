@@ -6,6 +6,7 @@ const strategy = new LocalStrategy(
 		usernameField: 'username' // not necessary, DEFAULT
 	},
 	function(username, password, done) {
+		//IB request to the database
 		User.findOne({ username: username }, (err, user) => {
 			if (err) {
 				return done(err)
