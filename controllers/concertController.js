@@ -1,6 +1,6 @@
 const db = require("../models");
 
-module.export = {
+module.exports = {
     addConcert: function(req, res) {
         db.Concert
         .create(req.body)
