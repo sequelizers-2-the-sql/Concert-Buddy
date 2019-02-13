@@ -4,12 +4,13 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 var path = require("path");
 const dbConnection = require('./models')
-const concerts=require('./models/concert')
 const MongoStore = require('connect-mongo')(session)
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
 const user = require('./routes/api/user')
+// const concerts = require('./routes/api/concerts')
+
 //IB adding for passport
 const passport = require('passport');
 
@@ -38,6 +39,7 @@ app.use(passport.session()) // calls the deserializeUser
 
 // Routes
 app.use('/user', user)
+// app.use('/concerts', concerts)
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
