@@ -33,7 +33,7 @@ app.use(
 		resave: false, //required
 		saveUninitialized: false //required
 	})
-)
+);
 
 // IB to pass the passport middleware
 app.use(passport.initialize());
@@ -41,6 +41,7 @@ app.use(passport.session()) // calls the deserializeUser
 
 // Routes
 app.use(routes);
+app.use('/user', user);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
