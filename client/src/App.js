@@ -11,7 +11,7 @@ import Login from "./pages/Login";
 //import Auth from './utils/Auth';
 //import Navbar from './components/navbar'
 import Navbar from "./components/Navigation/Navigation";
-
+import "./App.css"
 
 
 class App extends Component {
