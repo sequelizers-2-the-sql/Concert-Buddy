@@ -51,6 +51,8 @@ class Events extends Component {
       latitude: concert.venue.lat,
       longitude: concert.venue.lng,
     })
+    .then(res => window.location.href = "/concerts/" + res.data._id)
+    .catch(err => console.log(err))
   }
 
   handleRadioChange = event => {
