@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 import Home from "./pages/Home";
+import MyEvents from "./pages/MyEvents"
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 //import Auth from './utils/Auth';
@@ -81,6 +82,10 @@ class App extends Component {
           render={() =>
             <Signup/>}
         />
+        <Route
+          exact path="/concerts/:id"
+          component={MyEvents}
+          />
 
       </div>
     );
