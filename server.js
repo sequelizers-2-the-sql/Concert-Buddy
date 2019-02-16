@@ -2,15 +2,12 @@ const express = require("express");
 //IB for sessions
 const bodyParser = require('body-parser')
 const session = require('express-session')
-var path = require("path");
 const Model = require('./models')
 let dbConnection =  Model.mongoose
 const MongoStore = require('connect-mongo')(session)
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
-const user = require('./routes/api/user')
-// const concerts = require('./routes/api/concerts')
 
 const routes = require('./routes')
 //IB adding for passport
@@ -23,6 +20,10 @@ app.use(
 	})
 )
 app.use(bodyParser.json())
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Sessions --> creates an empty session object, as req.session
 // saves the session object to the database
@@ -41,7 +42,6 @@ app.use(passport.session()) // calls the deserializeUser
 
 // Routes
 app.use(routes);
-// app.use('/user', user);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
