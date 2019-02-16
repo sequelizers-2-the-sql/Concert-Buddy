@@ -20,6 +20,10 @@ app.use(
 	})
 )
 app.use(bodyParser.json())
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Sessions --> creates an empty session object, as req.session
 // saves the session object to the database
