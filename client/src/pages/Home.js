@@ -12,8 +12,13 @@ class Events extends Component {
     events: [],
     search: "",
     selector: "",
-    input:""
-  };
+    input:"",
+    userId: this.props.userId
+    };
+
+    componentDidMount() {
+     console.log("hello" + this.props.userId);
+    }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -69,12 +74,13 @@ class Events extends Component {
     });
   };
 
+  
   render() {
     return (<>
       <Container>
         <Row>
           <Col size="md-12">
-
+<p>Hi {this.props.userId}</p>
             <form>
               <Input
                 value={this.state.search}
