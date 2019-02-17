@@ -11,7 +11,7 @@ function RadioButton(props) {
                     checked={props.zip}
                     onChange={props.change}
                 />
-                Zip
+                 Zip
             </label>        
         </li>
                 <li>
@@ -22,7 +22,7 @@ function RadioButton(props) {
                         checked={props.artist}
                         onChange={props.change}
                     />
-                    Artist
+                     Artist
                 </label>        
             </li>
             </ul>

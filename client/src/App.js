@@ -6,12 +6,13 @@ import {
   Redirect,
 } from 'react-router-dom'
 import Home from "./pages/Home";
+import MyEvents from "./pages/MyEvents"
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 //import Auth from './utils/Auth';
 //import Navbar from './components/navbar'
 import Navbar from "./components/Navigation/Navigation";
-
+import "./App.css"
 
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
+    axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
@@ -67,7 +68,7 @@ class App extends Component {
         }
         {/* Routes to different components */}
         <Route
-          exact path="/"
+          exact path="/home"
           component={Home} />
         <Route
           path="/login"
@@ -77,10 +78,14 @@ class App extends Component {
             />}
         />
         <Route
-          path="/signup"
+         exact path="/"
           render={() =>
             <Signup/>}
         />
+        <Route
+          exact path="/concerts/:id"
+          component={MyEvents}
+          />
 
       </div>
     );

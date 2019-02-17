@@ -26,17 +26,15 @@ class Signup extends Component {
 		event.preventDefault()
 
 		//request to server to add a new username/password
-		axios.post('/user/  ', {
+		axios.post('/api/users/signup  ', {
 			username: this.state.username,
 			password: this.state.password
 		})
 			.then(response => {
 				console.log(response)
-				if (!response.data.errmsg) {
+				if (!response.data.error) {
 					console.log('successful signup')
-					this.setState({ //redirect to login page
-						redirectTo: '/login'
-					})
+					window.location.href = "/login"
 				} else {
 					console.log('username already taken')
 				}

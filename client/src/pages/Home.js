@@ -12,6 +12,7 @@ class Events extends Component {
     events: [],
     search: "",
     selector: "",
+    input:""
   };
 
   handleFormSubmit = event => {
@@ -23,7 +24,7 @@ class Events extends Component {
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
             console.log(events)
-            this.setState({ events: events, search: "" })
+            this.setState({ events: events })
           }
           )
           .catch(err => console.log(err));
@@ -33,7 +34,7 @@ class Events extends Component {
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
             console.log(events)
-            this.setState({ events: events, search: "" })
+            this.setState({ events: events })
           })
       }
     }
@@ -51,6 +52,8 @@ class Events extends Component {
       latitude: concert.venue.lat,
       longitude: concert.venue.lng,
     })
+    .then(res => window.location.href = "/concerts/" + res.data._id)
+    .catch(err => console.log(err))
   }
 
   handleRadioChange = event => {
@@ -92,10 +95,10 @@ class Events extends Component {
                 Search
       </FormBtn>
             </form>
-            <List number={this.state.events.length} />
+            <List number={this.state.events.length} input={this.state.search}/>
 
             {this.state.events ?
-
+              
               this.state.events.map((event, i) => {
                 return <>
 

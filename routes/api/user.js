@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../../models/user.js')
+const User = require('../../models/User')
 const passport = require('../../passport')
 
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
     console.log('user signup');
 
     const { username, password } = req.body
@@ -12,6 +12,7 @@ router.post('/', (req, res) => {
         if (err) {
             console.log('User.js post error: ', err)
         } else if (user) {
+            console.log("Username already existss")
             res.json({
                 error: `Sorry, already a user with the username: ${username}`
             })
