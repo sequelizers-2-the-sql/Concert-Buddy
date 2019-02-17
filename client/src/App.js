@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
+    axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
@@ -68,7 +68,7 @@ class App extends Component {
         }
         {/* Routes to different components */}
         <Route
-          exact path="/"
+          exact path="/home"
           component={Home} />
         <Route
           path="/login"
@@ -78,7 +78,7 @@ class App extends Component {
             />}
         />
         <Route
-          path="/signup"
+         exact path="/"
           render={() =>
             <Signup/>}
         />

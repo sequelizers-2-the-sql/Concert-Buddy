@@ -12,6 +12,7 @@ router.post('/signup', (req, res) => {
         if (err) {
             console.log('User.js post error: ', err)
         } else if (user) {
+            console.log("Username already existss")
             res.json({
                 error: `Sorry, already a user with the username: ${username}`
             })
