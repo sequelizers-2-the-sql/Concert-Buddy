@@ -13,7 +13,7 @@ const concertSchema = new Schema({
 	city: { type: String, unique: false, required: false },
 	latitude: { type: Number, unique: false, required: false },
 	longitude: { type: Number, unique: false, required: false },
-	attendess: [
+	attendees: [
 		{
 		type: Schema.Types.ObjectId,
 		ref: "User", unique: false, required: false    
