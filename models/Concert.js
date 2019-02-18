@@ -4,7 +4,8 @@ mongoose.promise = Promise
 
 // Define userSchema
 const concertSchema = new Schema({
-
+	userId: {type: String, unique: false, required: false},
+	concertId: { type: Number, unique: false, required: false },
 	artist: { type: String, unique: false, required: false },
 	venue: { type: String, unique: false, required: false },
 	date: { type: Date, unique: false, required: false },
