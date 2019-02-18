@@ -6,5 +6,8 @@ export default {
     },
     getConcert: function(id) {
         return axios.get("/api/concerts/" + id);
+    },
+    getMyEvents: function(id) {
+        return axios.get("/api/users/" + id);
     }
 }

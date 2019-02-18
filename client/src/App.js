@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import Home from "./pages/Home";
 import MyEvents from "./pages/MyEvents"
+import Concerts from "./pages/Concerts"
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 //import Auth from './utils/Auth';
@@ -64,7 +65,7 @@ class App extends Component {
     return (
       <div className="App">
    
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+        <Navbar userId = {this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
         {this.state.loggedIn &&
           <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
@@ -89,8 +90,12 @@ class App extends Component {
             <Signup/>}
         />
         <Route
-          exact path="/concerts/:id"
+          exact path="/myevents/:id"
           component={MyEvents}
+          />
+        <Route
+          exact path="/concerts/:id"
+          component={Concerts}
           />
 
       </div>

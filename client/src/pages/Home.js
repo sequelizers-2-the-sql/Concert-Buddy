@@ -12,13 +12,8 @@ class Events extends Component {
     events: [],
     search: "",
     selector: "",
-    input:"",
-    userId: this.props.userId
+    input:""
     };
-
-    componentDidMount() {
-     console.log("hello" + this.props.userId);
-    }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -28,7 +23,6 @@ class Events extends Component {
           .then(res => {
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
-            console.log(events)
             this.setState({ events: events })
           }
           )
@@ -38,7 +32,6 @@ class Events extends Component {
           .then(res => {
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
-            console.log(events)
             this.setState({ events: events })
           })
       }
@@ -46,7 +39,6 @@ class Events extends Component {
   };
 
   attendEvent = show => {
-    console.log(show)
     let userId = this.props.userId
       API.attendConcert({
       userId: userId,
@@ -59,8 +51,7 @@ class Events extends Component {
       latitude: show.venue.lat,
       longitude: show.venue.lng,
     })
-    .then(res => {console.log(res)
-      window.location.href = "/concerts/" + res.data._id})
+    .then(res =>   window.location.href = "/concerts/" + res.data._id)
     .catch(err => console.log(err))
   }
 
@@ -83,7 +74,6 @@ class Events extends Component {
       <Container>
         <Row>
           <Col size="md-12">
-<p>Hi {this.props.userId}</p>
             <form>
               <Input
                 value={this.state.search}
