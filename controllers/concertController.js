@@ -13,18 +13,36 @@ module.exports = {
         .then(concert => {
         if (!concert) {
         return db.Concert.create(req.body)
-        .then(res => {
+        .then(musical => {
             return db.Concert.findOneAndUpdate({
-                "_id": res._id
+                "_id": musical._id
             }, {
                 $push: {attendees: req.body.userId}
             }, {
                 new: true
             })
-        }).then(show => res.json(show))
+        }).then(show => {
+            return db.User.findOneAndUpdate(
+                {
+                    "_id": req.body.userId
+                }, {
+                    $push: {concerts: show._id}
+                }, {
+                    new: true
+                }
+            ).then(res.json(show))
+        })
             }
         else {
-            res.json(concert);
+            return db.User.findOneAndUpdate(
+                {
+                "_id": req.body.userId
+            }, {
+                $push: {concerts: concert._id}
+            }, {
+                new: true
+            })
+            .then(res.json(concert))
         }
         })
     },

@@ -46,6 +46,7 @@ class Events extends Component {
   };
 
   attendEvent = show => {
+    console.log(show)
     let userId = this.props.userId
       API.attendConcert({
       userId: userId,
@@ -58,7 +59,8 @@ class Events extends Component {
       latitude: show.venue.lat,
       longitude: show.venue.lng,
     })
-    .then(res => window.location.href = "/concerts/" + res.data._id)
+    .then(res => {console.log(res)
+      window.location.href = "/concerts/" + res.data._id})
     .catch(err => console.log(err))
   }
 
