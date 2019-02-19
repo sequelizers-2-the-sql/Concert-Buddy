@@ -101,7 +101,7 @@ class Events extends Component {
               this.state.events.map((event, i) => {
                 return <>
 
-                  <ListItem event={event} clickHandler={this.attendEvent} key={i} />
+                  <ListItem event={event.displayName} clickHandler={this.attendEvent} key={i} />
                 </>
               }) : (
                 <h3>No Results to Display</h3>
