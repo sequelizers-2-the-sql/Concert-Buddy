@@ -26,7 +26,7 @@ class LoginForm extends Component {
         console.log('handleSubmit')
 
         axios
-            .post('/user/login', {
+            .post('api/users/login', {
                 username: this.state.username,
                 password: this.state.password
             })
@@ -40,9 +40,7 @@ class LoginForm extends Component {
                         username: response.data.username
                     })
                     // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
+                    window.location.href = "/home"
                 }
             }).catch(error => {
                 console.log('login error: ')

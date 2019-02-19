@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import Home from "./pages/Home";
 import MyEvents from "./pages/MyEvents"
+import Concerts from "./pages/Concerts"
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 //import Auth from './utils/Auth';
@@ -21,7 +22,8 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      userId: null,
     }
 
     this.getUser = this.getUser.bind(this)
@@ -38,7 +40,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
+    axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
@@ -46,13 +48,15 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
-          username: response.data.user.username
+          username: response.data.user.username,
+          userId: response.data.user._id
         })
       } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
-          username: null
+          username: null,
+          userId: null
         })
       }
     })
@@ -62,15 +66,18 @@ class App extends Component {
     return (
       <div className="App">
    
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+        <Navbar userId = {this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
         {this.state.loggedIn &&
-          <p>You are logged in, {this.state.username}!!!!</p>
+          <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
         }
         {/* Routes to different components */}
         <Route
-          exact path="/"
-          component={Home} />
+          exact path="/home"
+          render = {() => 
+            <Home userId = {this.state.userId} />
+          }
+          />
         <Route
           path="/login"
           render={() =>
@@ -79,18 +86,26 @@ class App extends Component {
             />}
         />
         <Route
-          path="/signup"
+         exact path="/"
           render={() =>
             <Signup/>}
         />
         <Route
-          exact path="/concerts/:id"
+          exact path="/myevents/:id"
           component={MyEvents}
           />
+<<<<<<< HEAD
           <Route
           path="/home"
           component={Landing}
 />
+=======
+        <Route
+          exact path="/concerts/:id"
+          component={Concerts}
+          />
+
+>>>>>>> 6ac39d5bbc80215424242d093b0bd9332d40498b
       </div>
     );
   }

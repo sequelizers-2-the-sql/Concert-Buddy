@@ -13,7 +13,7 @@ class Events extends Component {
     search: "",
     selector: "",
     input:""
-  };
+    };
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -23,7 +23,6 @@ class Events extends Component {
           .then(res => {
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
-            console.log(events)
             this.setState({ events: events })
           }
           )
@@ -33,7 +32,6 @@ class Events extends Component {
           .then(res => {
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
-            console.log(events)
             this.setState({ events: events })
           })
       }
@@ -41,18 +39,19 @@ class Events extends Component {
   };
 
   attendEvent = show => {
-    let concert = show;
-    console.log(show);
-    API.attendConcert({
-      artist: concert.performance[0].artist.displayName,
-      venue: concert.venue.displayName,
-      date: concert.start.date,
-      time: concert.start.time,
-      city: concert.venue.metroArea.displayName,
-      latitude: concert.venue.lat,
-      longitude: concert.venue.lng,
+    let userId = this.props.userId
+      API.attendConcert({
+      userId: userId,
+      concertId: show.id,
+      artist: show.performance[0].artist.displayName,
+      venue: show.venue.displayName,
+      date: show.start.date,
+      time: show.start.time,
+      city: show.venue.metroArea.displayName,
+      latitude: show.venue.lat,
+      longitude: show.venue.lng,
     })
-    .then(res => window.location.href = "/concerts/" + res.data._id)
+    .then(res =>   window.location.href = "/concerts/" + res.data._id)
     .catch(err => console.log(err))
   }
 
@@ -69,12 +68,12 @@ class Events extends Component {
     });
   };
 
+  
   render() {
     return (<>
       <Container>
         <Row>
           <Col size="md-12">
-
             <form>
               <Input
                 value={this.state.search}
@@ -102,7 +101,7 @@ class Events extends Component {
               this.state.events.map((event, i) => {
                 return <>
 
-                  <ListItem event={event} clickHandler={this.attendEvent} key={i} />
+                  <ListItem event={event.displayName} clickHandler={this.attendEvent} key={i} />
                 </>
               }) : (
                 <h3>No Results to Display</h3>

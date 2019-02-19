@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../../models/User')
 const passport = require('../../passport')
 
+
 router.post('/signup', (req, res) => {
     console.log('user signup');
 
@@ -12,6 +13,7 @@ router.post('/signup', (req, res) => {
         if (err) {
             console.log('User.js post error: ', err)
         } else if (user) {
+            console.log("Username already existss")
             res.json({
                 error: `Sorry, already a user with the username: ${username}`
             })
@@ -28,6 +30,7 @@ router.post('/signup', (req, res) => {
         }
     })
 })
+
 
 router.post(
     '/login',
@@ -66,4 +69,18 @@ router.post('/logout', (req, res) => {
     }
 })
 
+<<<<<<< HEAD
 module.exports = router;s
+=======
+router.get('/:id', (req, res) => {
+    let userId = req.params.id;
+    User.findOne({
+        _id: userId
+    })
+    .populate("concerts")
+    .then(dbUser => res.json(dbUser))
+    .catch(err => res.json(err))
+  })
+
+module.exports = router
+>>>>>>> 6ac39d5bbc80215424242d093b0bd9332d40498b

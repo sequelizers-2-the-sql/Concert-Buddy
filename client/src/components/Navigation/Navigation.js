@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Navigation.css";
 
 export default function Navigation(props) {
@@ -9,13 +9,13 @@ export default function Navigation(props) {
       </a>
       <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link logo-nav" href="/">home</a>
+                        <a class="nav-link logo-nav" href="/home">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link logo-nav" href="/myevents">my events</a>
+                        <a class="nav-link logo-nav" href={`/myevents/${props.userId}`}>my events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link logo-nav" href="/use/logout">logout</a>
+                        <a class="nav-link logo-nav" href="/api/users/logout">logout</a>
                     </li>
                 </ul>
     </nav>

@@ -3,19 +3,27 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Container, Row, Col } from "../components/Container";
+import { List, ListItem } from "../components/EventList";
 class MyEvents extends Component {
   state = {
-    event: {},
+    user: {},
+    concerts: []
   };
 
+  
 
   componentDidMount() {
-    API.getConcert(this.props.match.params.id)
-      .then(res => {
-        this.setState({ event: res.data });
-        console.log(this.state.event.artist)
-      })
-      .catch(err => console.log(err));
+    API.getMyEvents(this.props.match.params.id)
+    .then(res => {
+      this.setState({ 
+        user: res.data,
+        concerts: res.data.concerts
+       });
+      console.log(this.state.user)
+      console.log(this.state.concerts)
+    })
+    .catch(err => console.log(err));
+    
   }
 
   handleInputChange = event => {
@@ -28,10 +36,18 @@ class MyEvents extends Component {
   render() {
     return (<>
       <Container>
+      {this.state.concerts ?
+              
+              this.state.concerts.map((event, i) => {
+                return <>
+
+                  <ListItem event={event.artist} clickHandler={this.attendEvent} key={i} />
+                </>
+              }) : (
+                <h3>No Results to Display</h3>
+              )}
         <Row>
           <Col size="md-12">
-            <h1>{this.state.event.artist}</h1>
-            <h2>Playing at {this.state.event.venue} at {this.state.event.time}</h2>
             
           </Col>
         </Row>
