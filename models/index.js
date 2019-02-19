@@ -32,6 +32,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/localCB", { use
 
 module.exports = {
     mongoose: mongoose.connection,
-    Concert: require("./Concert")
+    Concert: require("./Concert"),
+    User: require("./User")
       };
       

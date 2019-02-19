@@ -26,8 +26,8 @@ export function ListItem(props) {
           </ul> */}
         {/* </div> */}
         <div className="col-xs-12 col-sm-12 col-md-7 excerpet">
-          <h3 className="result-title" onClick={()=>{props.clickHandler(props.event)}}>{props.event.displayName}</h3>
-          <p>{props.event.displayName}</p>
+          <h3 className="result-title" onClick={()=>{props.clickHandler(props.event)}}>{props.event}</h3>
+          <p>{props.event}</p>
         </div>
         <span className="clearfix borda"></span>
       </article>

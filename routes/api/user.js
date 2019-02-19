@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../../models/User')
 const passport = require('../../passport')
 
+
 router.post('/signup', (req, res) => {
     console.log('user signup');
 
@@ -67,5 +68,15 @@ router.post('/logout', (req, res) => {
         res.send({ msg: 'no user to log out' })
     }
 })
+
+router.get('/:id', (req, res) => {
+    let userId = req.params.id;
+    User.findOne({
+        _id: userId
+    })
+    .populate("concerts")
+    .then(dbUser => res.json(dbUser))
+    .catch(err => res.json(err))
+  })
 
 module.exports = router
