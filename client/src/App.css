@@ -1,3 +1,13 @@
 body {
-  background-color: whitesmoke;
+  background-image: url("./photos/edwin-pic.jpg");
+  background-size: 100%;
+}
+
+h1, p {
+  color: whitesmoke;
+}
+
+.container {
+  background-color: #4e606e;
+  opacity: 0.9;
 }

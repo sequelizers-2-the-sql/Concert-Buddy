@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {  Component } from 'react';
 import axios from 'axios'
 import {
   BrowserRouter as Router,
@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 //import Auth from './utils/Auth';
 //import Navbar from './components/navbar'
 import Navbar from "./components/Navigation/Navigation";
+import Landing from "./pages/Landing"
 import "./App.css"
 
 
