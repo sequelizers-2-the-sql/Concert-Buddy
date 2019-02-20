@@ -94,18 +94,11 @@ class App extends Component {
           exact path="/myevents/:id"
           component={MyEvents}
           />
-<<<<<<< HEAD
-          <Route
-          path="/home"
-          component={Landing}
-/>
-=======
         <Route
           exact path="/concerts/:id"
           component={Concerts}
           />
 
->>>>>>> 6ac39d5bbc80215424242d093b0bd9332d40498b
       </div>
     );
   }

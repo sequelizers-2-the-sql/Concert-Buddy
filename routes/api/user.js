@@ -69,9 +69,6 @@ router.post('/logout', (req, res) => {
     }
 })
 
-<<<<<<< HEAD
-module.exports = router;s
-=======
 router.get('/:id', (req, res) => {
     let userId = req.params.id;
     User.findOne({
@@ -83,4 +80,3 @@ router.get('/:id', (req, res) => {
   })
 
 module.exports = router
->>>>>>> 6ac39d5bbc80215424242d093b0bd9332d40498b

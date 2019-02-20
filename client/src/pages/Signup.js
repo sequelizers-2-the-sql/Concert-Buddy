@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 //IB axiois is a library for making http requests from React.
 import axios from 'axios'
+import { Container, Row } from '../components/Container';
+import "./Signup.css"
 
 class Signup extends Component {
 	constructor() {
@@ -13,8 +15,8 @@ class Signup extends Component {
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
-  }
-  //IB handleChange function sets the state to the text that is typed for username and password.
+	}
+	//IB handleChange function sets the state to the text that is typed for username and password.
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
@@ -46,53 +48,56 @@ class Signup extends Component {
 	}
 
 
-render() {
-	return (
-		<div className="SignupForm">
-			<h4>Sign up</h4>
-			<form className="form-horizontal">
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="username">Username</label>
+	render() {
+		return (
+			<Container>
+				<Row>
+					<div className="SignupForm">
+						<h4>Sign up</h4>
+						<form className="form-horizontal">
+							<div className="form-group">
+								<div className="col-4 col-ml-auto">
+									<label className="form-label" htmlFor="username">Username</label>
+								</div>
+								<div className="col-4 col-mr-auto">
+									<input className="form-input"
+										type="text"
+										id="username"
+										name="username"
+										placeholder="Username"
+										value={this.state.username}
+										onChange={this.handleChange}
+									/>
+								</div>
+							</div>
+							<div className="form-group">
+								<div className="col-1 col-ml-auto">
+									<label className="form-label" htmlFor="password">Password: </label>
+								</div>
+								<div className="col-3 col-mr-auto">
+									<input className="form-input"
+										placeholder="password"
+										type="password"
+										name="password"
+										value={this.state.password}
+										onChange={this.handleChange}
+									/>
+								</div>
+							</div>
+							<div className="form-group ">
+								{/* <div className="col-"></div> */}
+								<button
+									className="btn btn-primary"
+									onClick={this.handleSubmit}
+									type="submit"
+								>Sign up</button>
+							</div>
+						</form>
 					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							type="text"
-							id="username"
-							name="username"
-							placeholder="Username"
-							value={this.state.username}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group">
-					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="password">Password: </label>
-					</div>
-					<div className="col-3 col-mr-auto">
-						<input className="form-input"
-							placeholder="password"
-							type="password"
-							name="password"
-							value={this.state.password}
-							onChange={this.handleChange}
-						/>
-					</div>
-				</div>
-				<div className="form-group ">
-					<div className="col-7"></div>
-					<button
-						className="btn btn-primary col-1 col-mr-auto"
-						onClick={this.handleSubmit}
-						type="submit"
-					>Sign up</button>
-				</div>
-			</form>
-		</div>
-
-	)
-}
+				</Row>
+			</Container>
+		)
+	}
 }
 
 export default Signup
