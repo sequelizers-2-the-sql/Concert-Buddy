@@ -97,7 +97,12 @@ class App extends Component {
         <Route
           exact path="/concerts/:id"
           component={Concerts}
+        />
+        <Route
+          exact path="/landing"
+          component={Landing}
           />
+
 
       </div>
     );

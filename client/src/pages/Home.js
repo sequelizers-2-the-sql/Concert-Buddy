@@ -12,8 +12,8 @@ class Events extends Component {
     events: [],
     search: "",
     selector: "",
-    input:""
-    };
+    input: ""
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -40,7 +40,7 @@ class Events extends Component {
 
   attendEvent = show => {
     let userId = this.props.userId
-      API.attendConcert({
+    API.attendConcert({
       userId: userId,
       concertId: show.id,
       artist: show.performance[0].artist.displayName,
@@ -51,8 +51,8 @@ class Events extends Component {
       latitude: show.venue.lat,
       longitude: show.venue.lng,
     })
-    .then(res =>   window.location.href = "/concerts/" + res.data._id)
-    .catch(err => console.log(err))
+      .then(res => window.location.href = "/concerts/" + res.data._id)
+      .catch(err => console.log(err))
   }
 
   handleRadioChange = event => {
@@ -68,7 +68,7 @@ class Events extends Component {
     });
   };
 
-  
+
   render() {
     return (<>
       <Container>
@@ -94,10 +94,10 @@ class Events extends Component {
                 Search
       </FormBtn>
             </form>
-            <List number={this.state.events.length} input={this.state.search}/>
+            <List number={this.state.events.length} input={this.state.search} />
 
             {this.state.events ?
-              
+
               this.state.events.map((event, i) => {
                 return <>
 
@@ -106,12 +106,12 @@ class Events extends Component {
               }) : (
                 <h3>No Results to Display</h3>
               )}
-            </Col>
-            </Row>
-            </Container>
-            </>
-          )
-    };
-  }
-  
+          </Col>
+        </Row>
+      </Container>
+    </>
+    )
+  };
+}
+
 export default Events;
