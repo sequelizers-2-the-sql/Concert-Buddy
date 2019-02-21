@@ -15,14 +15,14 @@ hgroup {
 
 hgroup h1 {
     font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
-    color: #2a3644;
+    color: whitesmoke;
     margin-top: 0;
     line-height: 1.15;
 }
 
 hgroup h2.lead {
     font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
-    color: #2a3644;
+    color: whitesmoke;
     margin: 0;
     padding-bottom: 10px;
 }
