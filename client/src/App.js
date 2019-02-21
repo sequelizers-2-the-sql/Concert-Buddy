@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 //import Navbar from './components/navbar'
 import Navbar from "./components/Navigation/Navigation";
 import Landing from "./pages/Landing";
+import PreNav from "./components/PreNav/PreNav";
 import "./App.css"
 
 
@@ -66,8 +67,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          {window.location.pathname === '/signup' || window.location.pathname === '/login' || window.location.pathname === '/' ? <PreNav /> : <Navbar userId={this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} /> }
 
-          <Navbar userId={this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          
           {/* greet user if logged in: */}
           {this.state.loggedIn &&
             <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
@@ -88,7 +90,7 @@ class App extends Component {
               />}
           />
           <Route
-            exact path="/"
+            exact path="/signup"
             render={() =>
               <Signup />}
           />
@@ -102,10 +104,9 @@ class App extends Component {
           />
 
           <Route
-            exact path="/landing"
+            exact path="/"
             component={Landing}
           />
-
 
         </div>
       </Router>

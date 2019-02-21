@@ -1,0 +1,7 @@
+.subhead, .buttons{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.subhead, .buttons:hover{
+    color:whitesmoke;
+}
