@@ -1,4 +1,4 @@
-import React, {  Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios'
 import {
   BrowserRouter as Router,
@@ -13,7 +13,7 @@ import Login from "./pages/Login";
 //import Auth from './utils/Auth';
 //import Navbar from './components/navbar'
 import Navbar from "./components/Navigation/Navigation";
-import Landing from "./pages/Landing"
+import Landing from "./pages/Landing";
 import "./App.css"
 
 
@@ -35,7 +35,7 @@ class App extends Component {
     this.getUser()
   }
 
-  updateUser (userObject) {
+  updateUser(userObject) {
     this.setState(userObject)
   }
 
@@ -64,47 +64,51 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-   
-        <Navbar userId = {this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn &&
-          <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
-        }
-        {/* Routes to different components */}
-        <Route
-          exact path="/home"
-          render = {() => 
-            <Home userId = {this.state.userId} />
+      <Router>
+        <div className="App">
+
+          <Navbar userId={this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          {/* greet user if logged in: */}
+          {this.state.loggedIn &&
+            <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
           }
+          {/* Routes to different components */}
+
+          <Route
+            exact path="/home"
+            render={() =>
+              <Home userId={this.state.userId} />
+            }
           />
-        <Route
-          path="/login"
-          render={() =>
-            <Login
-              updateUser={this.updateUser}
-            />}
-        />
-        <Route
-         exact path="/"
-          render={() =>
-            <Signup/>}
-        />
-        <Route
-          exact path="/myevents/:id"
-          component={MyEvents}
+          <Route
+            path="/login"
+            render={() =>
+              <Login
+                updateUser={this.updateUser}
+              />}
           />
-        <Route
-          exact path="/concerts/:id"
-          component={Concerts}
-        />
-        <Route
-          exact path="/landing"
-          component={Landing}
+          <Route
+            exact path="/"
+            render={() =>
+              <Signup />}
+          />
+          <Route
+            exact path="/myevents/:id"
+            component={MyEvents}
+          />
+          <Route
+            exact path="/concerts/:id"
+            component={Concerts}
+          />
+
+          <Route
+            exact path="/landing"
+            component={Landing}
           />
 
 
-      </div>
+        </div>
+      </Router>
     );
   }
 }
