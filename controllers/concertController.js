@@ -6,7 +6,7 @@ module.exports = {
         .findOneAndUpdate({
             "concertId": req.body.concertId
         }, {
-            $push: {attendees: req.body.userId}
+            $addToSet: {attendees: req.body.userId}
         }, {
             new: true
         })
@@ -17,33 +17,34 @@ module.exports = {
             return db.Concert.findOneAndUpdate({
                 "_id": musical._id
             }, {
-                $push: {attendees: req.body.userId}
+                $addToSet: {attendees: req.body.userId}
             }, {
                 new: true
             })
         })
         .then(show => {
+            res.json(show);
             return db.User.findOneAndUpdate(
                 {
                     "_id": req.body.userId
                 }, {
-                    $push: {concerts: show._id}
+                    $addToSet: {concerts: show._id}
                 }, {
                     new: true
-                })
-            .then(theEnd => res.json(show))
+                }) 
+                
         })
             }
         else {
+            res.json(concert);
             return db.User.findOneAndUpdate(
                 {
                 "_id": req.body.userId
             }, {
-                $push: {concerts: concert._id}
+                $addToSet: {concerts: concert._id}
             }, {
                 new: true
             })
-            .then(final => res.json(concert))
         }
         })
         .then(finish => console.log(finish))
