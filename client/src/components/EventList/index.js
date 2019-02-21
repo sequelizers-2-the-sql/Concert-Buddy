@@ -18,16 +18,9 @@ export function ListItem(props) {
   return <div>
     <section className="listItem col-xs-12 col-sm-6 col-md-12">
       <article className="search-result row">
-        {/* <div className="col-xs-12 col-sm-12 col-md-2"> */}
-          {/* <ul className="meta-search">
-            <li><i className="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
-            <li><i className="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
-            <li><i className="glyphicon glyphicon-tags"></i> <span>People</span></li>
-          </ul> */}
-        {/* </div> */}
         <div className="col-xs-12 col-sm-12 col-md-7 excerpet">
-          <h3 className="result-title" onClick={()=>{props.clickHandler(props.event)}}>{props.event}</h3>
-          <p>{props.event}</p>
+          <h3 className="result-title" onClick={()=>{props.clickHandler(props.event)}}>{props.event.displayName}</h3>
+          <p>{props.event.displayName}</p>
         </div>
         <span className="clearfix borda"></span>
       </article>

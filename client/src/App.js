@@ -17,6 +17,7 @@ import ChatApp from './components/ChatApp';
 // import { default as Chatkit } from '@pusher/chatkit-server';
 
 import Navbar from "./components/Navigation/Navigation";
+import Landing from "./pages/Landing";
 import "./App.css"
 
 
@@ -125,55 +126,51 @@ class App extends Component {
 
     //ib for chat end
     return (
-      <div className="App">
-        {/* ib for chat 2.17.19 */}
-        {view}
-        <Navbar userId={this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn &&
-          <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
-        }
-        {/* Routes to different components */}
-        <Route
-          exact path="/home"
-          render={() =>
-            <Home userId={this.state.userId} />
+      <Router>
+        <div className="App">
+
+          <Navbar userId={this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          {/* greet user if logged in: */}
+          {this.state.loggedIn &&
+            <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
           }
-        />
-        <Route
-          path="/login"
-          render={() =>
-            <Login
-              updateUser={this.updateUser}
-            />}
-        />
-        <Route
-          exact path="/"
-          render={() =>
-            <Signup />}
-        />
-        <Route
-          exact path="/myevents/:id"
-          component={MyEvents}
-        />
-        <Route
-          exact path="/concerts/:id"
-          component={Concerts}
-        />
+          {/* Routes to different components */}
 
-        <Route
-          exact path="/chat"
-          render={() =>
-            <NickName />}
-        />
+          <Route
+            exact path="/home"
+            render={() =>
+              <Home userId={this.state.userId} />
+            }
+          />
+          <Route
+            path="/login"
+            render={() =>
+              <Login
+                updateUser={this.updateUser}
+              />}
+          />
+          <Route
+            exact path="/signup"
+            render={() =>
+              <Signup />}
+          />
+          <Route
+            exact path="/myevents/:id"
+            component={MyEvents}
+          />
+          <Route
+            exact path="/concerts/:id"
+            component={Concerts}
+          />
 
-<Route
-          exact path="/chatapp"
-          render={() =>
-            <ChatApp />}
-        />
+          <Route
+            exact path="/"
+            component={Landing}
+          />
 
-      </div>
+
+        </div>
+      </Router>
     );
   }
 }
