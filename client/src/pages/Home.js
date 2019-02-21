@@ -21,6 +21,7 @@ class Events extends Component {
       if (this.state.selector === "Zip") {
         KICK.concertZip(this.state.search)
           .then(res => {
+            console.log(res)
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
             this.setState({ events: events })
@@ -30,6 +31,7 @@ class Events extends Component {
       } else if (this.state.selector === "Artist") {
         KICK.concertArtist(this.state.search)
           .then(res => {
+            console.log(res)
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
             this.setState({ events: events })
@@ -101,7 +103,7 @@ class Events extends Component {
               this.state.events.map((event, i) => {
                 return <>
 
-                  <ListItem event={event.displayName} clickHandler={this.attendEvent} key={i} />
+                  <ListItem event={event} clickHandler={this.attendEvent} key={i} />
                 </>
               }) : (
                 <h3>No Results to Display</h3>
