@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.55",
-    "@pusher/chatkit-server": "^1.0.6",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
