@@ -3,6 +3,7 @@ import { Provider, Heading, Subhead, NavLink, Small } from 'rebass';
 import {
     Hero, Flex, CallToAction, ScrollDownIndicator
 } from 'react-landing-page';
+import "./Landing.css";
 
 class Landing extends Component {
     state = {
@@ -63,12 +64,13 @@ class Landing extends Component {
                     </Heading>
 
                     <Subhead
+                        className='subhead'
                         font='Arial'
                         fontSize={24}>don't ride solo to the show!
                     </Subhead>
                     <Flex mt={3}>
-                        <CallToAction href='/signup' font={'Arial'} bg='grey' mr={5} color='white'>SIGN UP</CallToAction>
-                        <CallToAction href='/login' font={'Arial'} color='white'>LOG IN</CallToAction>
+                        <CallToAction className='buttons' href='/signup' font={'Arial'} bg='grey' mr={5} color='white'>SIGN UP</CallToAction>
+                        <CallToAction className='buttons' href='/login' font={'Arial'} color='white'>LOG IN</CallToAction>
                     </Flex>
                     <ScrollDownIndicator />
                 </Hero>

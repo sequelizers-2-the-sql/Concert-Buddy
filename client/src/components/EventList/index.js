@@ -5,12 +5,10 @@ import "../EventList/style.css";
 
 export function List(props) {
   return (
-    <div className="container">
     <hgroup className="mb20">
       <h1>Concerts Below</h1>
         <h2 className="lead"><strong className="text-danger">{props.number}</strong> results were found for the search for <strong className="text-danger">{props.input}</strong></h2>
       </hgroup>
-      </div>
   );
 }
 

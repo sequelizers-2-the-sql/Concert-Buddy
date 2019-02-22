@@ -12,7 +12,8 @@ class Events extends Component {
     events: [],
     search: "",
     selector: "",
-    input: ""
+    input: "",
+    searched: false
   };
 
   handleFormSubmit = event => {
@@ -24,7 +25,7 @@ class Events extends Component {
             console.log(res)
             let events = res.data.resultsPage.results.event;
             if (events.length > 20) { events.length = 20 };
-            this.setState({ events: events })
+            this.setState({ events: events, searched: true })
           }
           )
           .catch(err => console.log(err));
@@ -72,6 +73,8 @@ class Events extends Component {
 
 
   render() {
+
+    const listDisplay = this.state.events.length > 0 ?  <List number={this.state.events.length} input={this.state.search} /> : ''
     return (<>
       <Container>
         <Row>
@@ -96,7 +99,8 @@ class Events extends Component {
                 Search
       </FormBtn>
             </form>
-            <List number={this.state.events.length} input={this.state.search} />
+            {/* <List number={this.state.events.length} input={this.state.search} /> */}
+            {listDisplay}
 
             {this.state.events ?
 
@@ -105,7 +109,7 @@ class Events extends Component {
 
                   <ListItem event={event} clickHandler={this.attendEvent} key={i} />
                 </>
-              }) : (
+              }) : !this.state.searched (
                 <h3>No Results to Display</h3>
               )}
           </Col>
