@@ -10,6 +10,10 @@ class Signup extends Component {
 		this.state = {
 			username: '',
 			password: '',
+			address: '',
+			city: '',
+			state: '',
+			zip: '',
 			confirmPassword: '',
 
 		}
@@ -80,6 +84,62 @@ class Signup extends Component {
 										type="password"
 										name="password"
 										value={this.state.password}
+										onChange={this.handleChange}
+									/>
+								</div>
+							</div>
+							<div className="form-group">
+								<div className="col-1 col-ml-auto">
+									<label className="form-label" htmlFor="address">Address: </label>
+								</div>
+								<div className="col-3 col-mr-auto">
+									<input className="form-input"
+										placeholder="address"
+										type="address"
+										name="address"
+										value={this.state.address}
+										onChange={this.handleChange}
+									/>
+								</div>
+							</div>
+							<div className="form-group">
+								<div className="col-1 col-ml-auto">
+									<label className="form-label" htmlFor="city">City: </label>
+								</div>
+								<div className="col-3 col-mr-auto">
+									<input className="form-input"
+										placeholder="city"
+										type="city"
+										name="city"
+										value={this.state.city}
+										onChange={this.handleChange}
+									/>
+								</div>
+							</div>
+							<div className="form-group">
+								<div className="col-1 col-ml-auto">
+									<label className="form-label" htmlFor="state">State: </label>
+								</div>
+								<div className="col-3 col-mr-auto">
+									<input className="form-input"
+										placeholder="state"
+										type="state"
+										name="state"
+										value={this.state.state}
+										onChange={this.handleChange}
+									/>
+								</div>
+							</div>
+							<div className="form-group">
+								<div className="col-1 col-ml-auto">
+									<label className="form-label" htmlFor="zip">Zip: </label>
+								</div>
+								<div className="col-3 col-mr-auto">
+									<input className="form-input"
+										placeholder="zip"
+										type="zip"
+										name="zip"
+										value={this.state.zip}
 										onChange={this.handleChange}
 									/>
 								</div>
