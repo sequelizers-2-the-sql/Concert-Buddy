@@ -79,8 +79,11 @@ class Events extends Component {
       <Container>
         <Row>
           <Col size="md-12">
+            <h2 style={{ fontFamily: "'Major Mono Display'", color: "whitesmoke"}}>welcome to ConcertBuddy</h2>
+            <h3 style={{ fontFamily: "'Major Mono Display'", color: "whitesmoke"}}>find your concert</h3>
             <form>
               <Input
+                
                 value={this.state.search}
                 onChange={this.handleInputChange}
                 name="search"
