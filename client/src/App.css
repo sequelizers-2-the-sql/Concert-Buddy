@@ -10,4 +10,5 @@ h1, p {
 .container {
   background-color: #4e606e;
   opacity: 0.9;
+  padding: 4%;
 }
