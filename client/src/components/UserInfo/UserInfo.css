@@ -1,5 +1,5 @@
-.concert-card {
-    width: 50% !important;
+.concert-card, .map-card {
+    /* width: 50% !important; */
     color: whitesmoke;
     /* margin: 0 auto; */
 }
