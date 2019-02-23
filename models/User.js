@@ -8,6 +8,10 @@ const userSchema = new Schema({
 
 	username: { type: String, unique: false, required: false },
 	password: { type: String, unique: false, required: false },
+	address: { type: String, unique: false, required: false },
+	city: { type: String, unique: false, required: false },
+	state: { type: String, unique: false, required: false },
+	zip: { type: String, unique: false, required: false },
 	concerts:[
 		{
 			type: Schema.Types.ObjectId,

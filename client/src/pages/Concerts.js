@@ -12,6 +12,7 @@ class MyEvents extends Component {
   componentDidMount() {
     API.getConcert(this.props.match.params.id)
       .then(res => {
+        console.log(res)
         this.setState({ event: res.data });
         console.log(this.state.event.artist)
       })
