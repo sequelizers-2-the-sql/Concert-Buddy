@@ -19,7 +19,6 @@ export function ListItem(props) {
         <div className="col-xs-12 col-sm-12 col-md-7 excerpet">
           <h3 className="result-title" onClick={()=>{props.clickHandler(props.event)}}>{props.event.displayName}</h3>
           <p>{props.event.displayName}</p>
-          <h1>I think this is the single event when I click on a concert?  No, it's not...</h1>
         </div>
         <span className="clearfix borda"></span>
       </article>
