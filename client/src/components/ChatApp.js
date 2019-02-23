@@ -35,7 +35,7 @@ class ChatApp extends Component {
                 this.setState({ currentUser: currentUser })
 
                 return currentUser.subscribeToRoom({
-                    roomId: "19410040",
+                    roomId: "19411955",
                     messageLimit: 100,
                     hooks: {
                         onMessage: message => {
@@ -53,8 +53,8 @@ class ChatApp extends Component {
                     users: currentRoom.userIds
                 })
             })
-            .catch(error => console.log('Error!!!',error))
-        }
+            .catch(error => console.log('Error!!!', error))
+    }
 
 
     addMessage(text) {
@@ -70,7 +70,9 @@ class ChatApp extends Component {
         return (
             <div>
                 {/* <h2 className="header">Let's Talk</h2> */}
-                <h2 className="header">Hi There, Ask us anything</h2>
+                <h2 className="header"><font color="red">Hi There, Ask us anything</font></h2>
+                {/* <h1>"You are in chatroom: {this.state.currentRoom}</h1> */}
+                {/* <h1>Nickname you've selected is: {message.senderId}</h1> */}
                 <MessageList messages={this.state.messages} />
                 <Input className="input-field" onSubmit={this.addMessage} />
             </div>

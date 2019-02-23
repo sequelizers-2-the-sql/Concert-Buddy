@@ -42,6 +42,7 @@ class MyEvents extends Component {
                 return <>
 
                   <ListItem event={event.artist} clickHandler={this.attendEvent} key={i} />
+                  <h1>What page is this in?</h1>
                 </>
               }) : (
                 <h3>No Results to Display</h3>

@@ -6,7 +6,7 @@ class MessageList extends Component {
             <ul className="message-list">
                 {this.props.messages.map((message, index) => (
                     <li key={index}>
-                        <h4 className="message-sender">{message.senderId}</h4>
+                        <h4 className="message-sender"><font color="red">{message.senderId}</font></h4>
                         <p className="message-text">{message.text}</p>
                     </li>
                 ))}

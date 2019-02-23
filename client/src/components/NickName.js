@@ -36,9 +36,9 @@ class NickName extends Component {
     render() {
         return (
             <div className="form-container">
-                <h1>Let's Chat!</h1>
+                <h1><font color="red">Let's Chat!</font></h1>
                 <form onSubmit={this.handleSubmit} className="form">
-                    <label htmlFor="nickname">What is your nickname?</label>
+                    <label htmlFor="nickname"><font color="red">What is your NickName?</font></label>
                     <input type="text" name="nickname" onChange={this.handleChange} className="input" />
                     <button className="submit">Submit</button>
                 </form>

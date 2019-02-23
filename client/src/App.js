@@ -179,7 +179,7 @@ class App extends Component {
 
           <Route
             exact path="/chatApp"
-            component={ChatApp}
+            component={ChatApp} 
           />
 
         </div>

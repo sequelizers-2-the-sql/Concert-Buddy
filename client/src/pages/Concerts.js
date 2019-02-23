@@ -32,6 +32,11 @@ class MyEvents extends Component {
           <Col size="md-12">
             <h1>{this.state.event.artist}</h1>
             <h2>Playing at {this.state.event.venue} at {this.state.event.time}</h2>
+            <h1>What page is this in?  pages/Concerts</h1>
+            <h1>See who's interested in buddy'ing up with you!
+            <a class="nav-link logo-nav" href="/chat">Click to Enter Chatroom</a>
+            </h1>
+            
             
           </Col>
         </Row>
