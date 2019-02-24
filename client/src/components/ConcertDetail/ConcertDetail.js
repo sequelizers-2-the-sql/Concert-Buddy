@@ -20,7 +20,9 @@ export function ConcertDetail(props) {
 
                     </ul>
                     <div className="card-body">
-                        <a href="#" className="card-link">Actually, I'm not interested in this concert</a>
+                        <a href="#" className="card-link">Actually, I'm not interested in this concert</a>                    </div>
+                    <div className="card-body">
+                        <a href="/chatapp" className="card-link">Find ConcertBuddies</a>
                     </div>
                 </div>
             </div>

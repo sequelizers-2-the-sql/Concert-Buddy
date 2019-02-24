@@ -8,6 +8,7 @@ import SendMessageForm from "./SendMessageForm";
 //Importing the tokenUrl and instanceLocator from config
 import { tokenUrl, instanceLocator } from "../config";
 import NickName from './NickName';
+import "./ChatApp.css";
 
 class ChatApp extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class ChatApp extends Component {
             users: [],
             //2/22/19 enhancements ib
             roomId: null, //room.id isn't defined till we subscribe/join a room
-           messages: [], //store our messages
+            messages: [], //store our messages
             joinableRooms: [], // All rooms including not subscribed rooms
             joinedRooms: [] // Rooms that the currentuser already subscribed to
 
@@ -106,44 +107,54 @@ class ChatApp extends Component {
     //       .then(room => this.subscribeToRoom(room.id))
     //       .catch(err => console.log("error on create Room: ", err));
     //   };
-//name = this.state.event.artist
+    //name = this.state.event.artist
 
-    createRoom = name=> {
+    createRoom = name => {
         this.currentUser
-          .createRoom({
-            name
-            // "this.state.event.artist"
-          })
-          .then(room => this.subscribeToRoom(room.id))
-          .catch(err => console.log("error on create Room: ", err));
-      };
+            .createRoom({
+                name
+                // "this.state.event.artist"
+            })
+            .then(room => this.subscribeToRoom(room.id))
+            .catch(err => console.log("error on create Room: ", err));
+    };
 
     //new codeends 2.22.19
 
     render() {
         return (
-            <div className="app">
-                <MessageList
-                    roomId={this.state.roomId}
-                    messages={this.state.messages}
-                />
-                
-                <NewRoomForm createRoom={this.createRoom} />
-                <RoomsList
-                    roomId={this.state.roomId}
-                    subscribeToRoom={this.subscribeToRoom}
-                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
-                />
-                <SendMessageForm
-                    disabled={!this.state.roomId}
-                    sendMessage={this.sendMessage}
+            <div>
+                <NickName
+
                 />
 
 
-                {/* inverse dataflow ( child to parent)*/}
-            </div>
-        );
-    }
-}; //class ChatApp extends Component ENDS
+                <div className="chatapp">
 
-export default ChatApp;
+
+                    <MessageList
+                        roomId={this.state.roomId}
+                        messages={this.state.messages}
+                    />
+
+                    <NewRoomForm createRoom={this.createRoom} />
+                    <RoomsList
+                        roomId={this.state.roomId}
+                        subscribeToRoom={this.subscribeToRoom}
+                        rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+                    />
+                    <SendMessageForm
+                        disabled={!this.state.roomId}
+                        sendMessage={this.sendMessage}
+                    />
+
+
+                    {/* inverse dataflow ( child to parent)*/}
+                </div>
+
+                </div>
+                );
+            }
+        }; //class ChatApp extends Component ENDS
+        
+        export default ChatApp;
