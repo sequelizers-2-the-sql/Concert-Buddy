@@ -11,8 +11,6 @@ class MyEvents extends Component {
     concerts: []
   };
 
-
-
   componentDidMount() {
     API.getMyEvents(this.props.match.params.id)
       .then(res => {
@@ -39,11 +37,13 @@ class MyEvents extends Component {
       <Container>
         <Row>
           <Col size="md-12">
+            <h2 className="myEvents-headline" style={{ color: "whitesmoke" }}>{this.state.user.username}'s Events</h2>
             {this.state.concerts ?
 
               this.state.concerts.map((event, i) => {
                 return <>
                   <UserEvents event={event} />
+                  <hr style={{backgroundColor: "whitesmoke"}}></hr>
                 </>
               }) : (
                 <h3>No Results to Display</h3>

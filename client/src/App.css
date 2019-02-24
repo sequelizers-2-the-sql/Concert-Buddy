@@ -1,5 +1,6 @@
 body {
   background-image: url("./photos/edwin-pic.jpg");
+  background-attachment: fixed;
   background-size: 100%;
 }
 
