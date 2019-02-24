@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 class Map extends Component {
-   render(props) {
+   render() {
    const GoogleMapExample = withGoogleMap(props => (
       <GoogleMap
         defaultCenter = { { lat: this.props.lat, lng: this.props.lng } }
         defaultZoom = { 13 }
       >
+      <Marker position={{ lat: this.props.lat, lng: this.props.lng }} />
       </GoogleMap>
    ));
    return(
