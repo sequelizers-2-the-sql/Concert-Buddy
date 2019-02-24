@@ -10,6 +10,7 @@ export function ConcertDetail(props) {
                 <div className="card concert-card">
                     <div className="card-body">
                         <h5 className="card-title">{props.event.artist}</h5>
+                        {/* <h5 className="card-text">{props.event.displayName}</h5> */}
                         <p className="card-text">{props.event.venue} in {props.event.city}</p>
                     </div>
                     <ul className="list-group list-group-flush">
