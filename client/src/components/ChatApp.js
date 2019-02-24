@@ -9,7 +9,6 @@ import SendMessageForm from "./SendMessageForm";
 import { tokenUrl, instanceLocator } from "../config";
 import NickName from './NickName';
 
-
 class ChatApp extends Component {
     constructor(props) {
         super(props);
@@ -99,33 +98,29 @@ class ChatApp extends Component {
         });
     };
 
-    createRoom = name => {
+    // createRoom = name => {
+    //     this.currentUser
+    //       .createRoom({
+    //         name
+    //       })
+    //       .then(room => this.subscribeToRoom(room.id))
+    //       .catch(err => console.log("error on create Room: ", err));
+    //   };
+//name = this.state.event.artist
+
+    createRoom = name=> {
         this.currentUser
-            .createRoom({
-                name
-            })
-            .then(room => this.subscribeToRoom(room.id))
-            .catch(err => console.log("error on create Room: ", err));
-    };
+          .createRoom({
+            name
+            // "this.state.event.artist"
+          })
+          .then(room => this.subscribeToRoom(room.id))
+          .catch(err => console.log("error on create Room: ", err));
+      };
+
     //new codeends 2.22.19
 
     render() {
-        //return (
-            // <div>
-            //     {/* <h2 className="header">Let's Talk</h2> */}
-            //     <h2 className="header"><font color="red">Hi There, Ask us anything</font></h2>
-                // {/* <h1>"You are in chatroom: {this.state.currentRoom}</h1> */}
-            //     {/* <h1>Nickname you've selected is: {message.senderId}</h1> */}
-            //     <MessageList messages={this.state.messages} />
-            //     <Input className="input-field" onSubmit={this.addMessage} />
-            //     <NewRoomForm createRoom={this.createRoom} />
-            //     <RoomsList roomId={this.state.roomId}
-            //         subscribeToRoom={this.subscribeToRoom}
-            //         rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
-            //     />
-            //     {/* inverse dataflow ( child to parent)*/}
-            // </div>
-        // )
         return (
             <div className="app">
                 <MessageList

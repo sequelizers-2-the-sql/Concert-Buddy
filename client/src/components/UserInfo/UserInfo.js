@@ -18,7 +18,7 @@ export function UserEvents(props) {
 
             </ul>
             <div className="card-body">
-                <a href="" className="card-link">Find ConcertBuddies</a>
+                <a href="/chatapp" className="card-link">Find ConcertBuddies</a>
                 <a href="" className="card-link">Delete Event</a>
             </div>
         </div>

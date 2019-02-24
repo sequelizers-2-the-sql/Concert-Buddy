@@ -3,6 +3,9 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Container, Row, Col } from "../components/Container";
+import ChatApp from "../components/ChatApp";
+import NewRoomForm from "../components/NewRoomForm";
+
 class MyEvents extends Component {
   state = {
     event: {},
@@ -25,19 +28,23 @@ class MyEvents extends Component {
     });
   };
 
+
   render() {
     return (<>
       <Container>
         <Row>
           <Col size="md-12">
             <h1>{this.state.event.artist}</h1>
+            {/* //2.23.19 IB added event ID for testing creation of chat room */}
+            <h2>Event ID: {this.state.event._id}</h2>
+            {/* <h2>Display Name: {this.state.event.displayname}</h2> */}
+
             <h2>Playing at {this.state.event.venue} at {this.state.event.time}</h2>
-            <h1>What page is this in?  pages/Concerts</h1>
-            <h1>See who's interested in buddy'ing up with you!
-            <a class="nav-link logo-nav" href="/chat">Click to Enter Chatroom</a>
-            </h1>
-            
-            
+            <div className="card-body">
+                <a href="/chatapp" className="card-link">Find ConcertBuddies</a>
+            </div>
+
+
           </Col>
         </Row>
       </Container>
