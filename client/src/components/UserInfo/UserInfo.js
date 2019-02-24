@@ -1,5 +1,6 @@
 import React from "react";
 import "./UserInfo.css"
+import Map from '../Map/index.js'
 
 // This file exports the components for the user's information/My Events page
 
@@ -27,11 +28,8 @@ export function UserEvents(props) {
                 <div className="col-md-6">
                     <div>
                         <div class="card map-card">
-                            <img class="card-img-top" src=".../100px180/" alt="Card image cap"></img>
                             <div class="card-body">
-                                <h5 class="card-title">Google Map goes here</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <Map lat={props.event.latitude} lng={props.event.longitude}/>
                             </div>
                         </div>
                     </div>
