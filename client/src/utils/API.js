@@ -9,5 +9,8 @@ export default {
     },
     getMyEvents: function(id) {
         return axios.get("/api/users/" + id);
+    },
+    removeEvent: function(id, ud) {
+        return axios.put("/api/users/" + id, ud);
     }
 }
