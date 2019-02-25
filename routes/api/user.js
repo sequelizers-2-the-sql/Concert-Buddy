@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../../models/User')
 const passport = require('../../passport')
+const Concert = require('../../models/Concert')
 
 
 router.post('/signup', (req, res) => {
@@ -79,4 +80,23 @@ router.get('/:id', (req, res) => {
     .catch(err => res.json(err))
   })
 
+router.put('/:id', (req, res) => {
+    User.findOneAndUpdate({
+        _id: req.params.id
+    }, {
+        $pull: {concerts: req.body.id}
+    }, {
+        new: true
+    })
+    .then(dbUser => {
+        Concert.findOneAndUpdate({
+            _id: req.body.id
+        }, {
+            $pull: {attendees: req.params.id}
+        }, {
+            new: true
+        }).then(dbModel => {console.log(dbModel); res.json(dbModel)})
+    })    
+    .catch(err => res.json(err))
+}) 
 module.exports = router
