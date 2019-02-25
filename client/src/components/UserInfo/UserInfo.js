@@ -1,6 +1,7 @@
 import React from "react";
 import "./UserInfo.css"
 import Map from '../Map/index.js'
+import DeleteBtn from '../DeleteButton/index.js'
 
 // This file exports the components for the user's information/My Events page
 
@@ -20,7 +21,7 @@ export function UserEvents(props) {
                         <li className="list-group-item">tidbit about the band? (do we need a new api?)</li>
                         <div className="card-body">
                             <a href="/chatapp" className="card-link">Find ConcertBuddies</a>
-                            <a href="" className="card-link">Delete Event</a>
+                            <DeleteBtn onClick={() => {props.removeEvent(props.user, {id: props.event._id})}} />
                         </div>
                     </ul>
                 </div>

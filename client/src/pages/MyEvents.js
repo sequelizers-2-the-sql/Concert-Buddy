@@ -12,6 +12,11 @@ class MyEvents extends Component {
   };
 
   componentDidMount() {
+    this.loadEvents()
+  }
+
+
+loadEvents = () => {
     API.getMyEvents(this.props.match.params.id)
       .then(res => {
         this.setState({
@@ -32,6 +37,12 @@ class MyEvents extends Component {
     });
   };
 
+removeEvent = (eventId, userId) => {
+  API.removeEvent(eventId, userId)
+  .then(res => this.loadEvents())
+  .catch(err => console.log(err))
+};
+
   render() {
     return (<>
       <Container>
@@ -42,7 +53,7 @@ class MyEvents extends Component {
 
               this.state.concerts.map((event, i) => {
                 return <>
-                  <UserEvents event={event} />
+                  <UserEvents event={event} user={this.state.user._id} removeEvent={this.removeEvent}/>
                   <hr style={{backgroundColor: "whitesmoke"}}></hr>
                 </>
               }) : (
