@@ -35,6 +35,7 @@
     "passport-local": "^1.0.0",
     "react-google-maps": "^9.4.5",
     "react-landing-page": "^2.0.2",
+    "read-more-react": "^1.0.6",
     "session": "^0.1.0",
     "validator": "^10.11.0"
   }

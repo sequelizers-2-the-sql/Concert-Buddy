@@ -1,6 +1,8 @@
 import React from "react";
 import "./ConcertDetail.css"
 import Map from '../Map/index.js'
+import ReadMoreReact from 'read-more-react';
+ 
 
 // This file exports the components for the user's information/My Events page
 
@@ -18,7 +20,7 @@ export function ConcertDetail(props) {
                         <li className="list-group-item">On {props.event.date}</li>
                         <li className="list-group-item">At {props.event.time}</li>
                         <li className="list-group-item">{props.concert.length} buddies attending!</li>
-                        <li className="list-group-item">tidbit about the band?</li>
+                        <li className="list-group-item"><ReadMoreReact text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet elementum quam. Vestibulum id est consequat diam porttitor vestibulum. Curabitur erat erat, lacinia eget rhoncus eget, vulputate vitae ligula. Nam placerat purus ac iaculis placerat. Aenean ligula justo, semper sed sem non, rhoncus venenatis odio. Praesent metus ligula, ullamcorper non commodo sit amet, tristique vitae lacus. Nullam augue quam, fringilla vel mattis in, posuere et mi. Vestibulum et turpis et sapien consequat rhoncus. Maecenas in erat mi. Integer gravida blandit turpis, ut efficitur magna hendrerit quis. Nulla vulputate odio ac tortor vulputate"}/></li>
 
                     </ul>
                     <div className="card-body">
@@ -31,7 +33,6 @@ export function ConcertDetail(props) {
             <div className="col-md-6">
                 <div>
                     <div class="card map-card">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap"></img>
                         <div class="card-body">
                             <Map />
                         </div>
