@@ -21,7 +21,7 @@ export function ListItem(props) {
       <article className="search-result row">
         <div className="col-xs-12 col-sm-12 col-md-7 excerpet">
           <h3 className="result-title" style={{color: "whitesmoke"}}onClick={()=>{props.clickHandler(props.event)}}>{props.event.displayName}</h3>
-          <p>{props.event.displayName}</p>
+          <div onClick={()=>{props.clickHandler(props.event)}} className="btn btn-primary">I'm attending!</div>
         </div>
         <span className="clearfix borda"></span>
       </article>

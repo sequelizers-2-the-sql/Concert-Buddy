@@ -17,9 +17,9 @@ export function ConcertDetail(props) {
             <div className="col-md-6">
                 <div className="card concert-card">
                     <div className="card-body">
-                        <h5 className="card-title">{props.event.artist}</h5>
+                        <h5 className="card-title font-weight-bold">{props.event.artist}</h5>
                         {/* <h5 className="card-text">{props.event.displayName}</h5> */}
-                        <p className="card-text">{props.event.venue} in {props.event.city}</p>
+                        <p className="card-text font-italic">{props.event.venue} in {props.event.city}</p>
                     </div>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">On {props.event.date}</li>

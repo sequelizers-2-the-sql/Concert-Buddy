@@ -12,6 +12,7 @@ h1, p {
   background-color: #4e606e;
   opacity: 0.9;
   padding: 4%;
+  border: 1px whitesmoke solid;
 }
 
 div.App {

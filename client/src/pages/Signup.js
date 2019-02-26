@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 //IB axiois is a library for making http requests from React.
 import axios from 'axios'
-import { Container, Row } from '../components/Container';
+import { Container, Row, Col } from '../components/Container';
 import "./Signup.css"
 
 class Signup extends Component {
@@ -56,104 +56,145 @@ class Signup extends Component {
 		return (
 			<Container>
 				<Row>
-					<div className="SignupForm">
-						<h4>Sign up</h4>
-						<form className="form-horizontal">
-							<div className="form-group">
-								<div className="col-4 col-ml-auto">
-									<label className="form-label" htmlFor="username">Username</label>
+					<Col size="md-6">
+						<div className="SignupForm">
+							<h1 style={{ fontFamily: "Major Mono Display" }}>Sign Up</h1>
+							<form className="form-horizontal">
+								<div className="form-group">
+									<div className="col-4 col-ml-auto">
+										<label className="form-label" htmlFor="username">Username</label>
+									</div>
+									<div className="col-4 col-mr-auto">
+										<input className="form-input"
+											type="text"
+											id="username"
+											name="username"
+											placeholder="Username"
+											value={this.state.username}
+											onChange={this.handleChange}
+										/>
+									</div>
 								</div>
-								<div className="col-4 col-mr-auto">
-									<input className="form-input"
-										type="text"
-										id="username"
-										name="username"
-										placeholder="Username"
-										value={this.state.username}
-										onChange={this.handleChange}
-									/>
+								<div className="form-group">
+									<div className="col-1 col-ml-auto">
+										<label className="form-label" htmlFor="password">Password: </label>
+									</div>
+									<div className="col-3 col-mr-auto">
+										<input className="form-input"
+											placeholder="password"
+											type="password"
+											name="password"
+											value={this.state.password}
+											onChange={this.handleChange}
+										/>
+									</div>
 								</div>
+								<div className="form-group">
+									<div className="col-1 col-ml-auto">
+										<label className="form-label" htmlFor="address">Address: </label>
+									</div>
+									<div className="col-3 col-mr-auto">
+										<input className="form-input"
+											placeholder="address"
+											type="address"
+											name="address"
+											value={this.state.address}
+											onChange={this.handleChange}
+										/>
+									</div>
+								</div>
+								<div className="form-group">
+									<div className="col-1 col-ml-auto">
+										<label className="form-label" htmlFor="city">City: </label>
+									</div>
+									<div className="col-3 col-mr-auto">
+										<input className="form-input"
+											placeholder="city"
+											type="city"
+											name="city"
+											value={this.state.city}
+											onChange={this.handleChange}
+										/>
+									</div>
+								</div>
+								<div className="form-group">
+									<div className="col-1 col-ml-auto">
+										<label className="form-label" htmlFor="state">State: </label>
+									</div>
+									<div className="col-3 col-mr-auto">
+										<input className="form-input"
+											placeholder="state"
+											type="state"
+											name="state"
+											value={this.state.state}
+											onChange={this.handleChange}
+										/>
+									</div>
+								</div>
+								<div className="form-group">
+									<div className="col-1 col-ml-auto">
+										<label className="form-label" htmlFor="zip">Zip: </label>
+									</div>
+									<div className="col-3 col-mr-auto">
+										<input className="form-input"
+											placeholder="zip"
+											type="zip"
+											name="zip"
+											value={this.state.zip}
+											onChange={this.handleChange}
+										/>
+									</div>
+								</div>
+								<div className="form-group ">
+									{/* <div className="col-"></div> */}
+									<button
+										className="btn btn-primary"
+										onClick={this.handleSubmit}
+										type="submit"
+									>Sign up</button>
+								</div>
+							</form>
+						</div>
+					</Col>
+
+					<Col size="md-6">
+						<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active" data-interval="10000">
+									<img src="https://images.unsplash.com/photo-1496185524395-81f295f4859e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="w-100 d-block" alt="..."></img>
+									<div class="carousel-caption d-none d-md-block">
+										<h3>"I met my best friend through ConcertBuddy!"</h3>
+										<p class="font-italic">Ben from Philadelphia</p>
+									</div>
+								</div>
+
+								<div class="carousel-item" data-interval="10000">
+									<img src="https://images.unsplash.com/photo-1493308903033-e622ac815e5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1110&q=80" class="w-100 d-block" alt="..."></img>
+									<div class="carousel-caption d-none d-md-block">
+										<h3>"I thought I was the only one with weird music taste until ConcertBuddy."</h3>
+										<p class="font-italic">Anna from Miami</p>
+									</div>
+								</div>
+
+								<div class="carousel-item" data-interval="10000">
+									<img style={{ opacity: "0.6" }} src="https://images.unsplash.com/photo-1442975433132-cb9580b88538?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="w-100 d-block" alt="..."></img>
+									<div class="carousel-caption d-none d-md-block">
+										<h3>"I didn't know anyone when I moved and went to shows alone. Then I met a whole new group of friends through ConcertBuddy!"</h3>
+										<p class="font-italic">Amanda from Boston</p>
+									</div>
+								</div>
+
+								<a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
 							</div>
-							<div className="form-group">
-								<div className="col-1 col-ml-auto">
-									<label className="form-label" htmlFor="password">Password: </label>
-								</div>
-								<div className="col-3 col-mr-auto">
-									<input className="form-input"
-										placeholder="password"
-										type="password"
-										name="password"
-										value={this.state.password}
-										onChange={this.handleChange}
-									/>
-								</div>
-							</div>
-							<div className="form-group">
-								<div className="col-1 col-ml-auto">
-									<label className="form-label" htmlFor="address">Address: </label>
-								</div>
-								<div className="col-3 col-mr-auto">
-									<input className="form-input"
-										placeholder="address"
-										type="address"
-										name="address"
-										value={this.state.address}
-										onChange={this.handleChange}
-									/>
-								</div>
-							</div>
-							<div className="form-group">
-								<div className="col-1 col-ml-auto">
-									<label className="form-label" htmlFor="city">City: </label>
-								</div>
-								<div className="col-3 col-mr-auto">
-									<input className="form-input"
-										placeholder="city"
-										type="city"
-										name="city"
-										value={this.state.city}
-										onChange={this.handleChange}
-									/>
-								</div>
-							</div>
-							<div className="form-group">
-								<div className="col-1 col-ml-auto">
-									<label className="form-label" htmlFor="state">State: </label>
-								</div>
-								<div className="col-3 col-mr-auto">
-									<input className="form-input"
-										placeholder="state"
-										type="state"
-										name="state"
-										value={this.state.state}
-										onChange={this.handleChange}
-									/>
-								</div>
-							</div>
-							<div className="form-group">
-								<div className="col-1 col-ml-auto">
-									<label className="form-label" htmlFor="zip">Zip: </label>
-								</div>
-								<div className="col-3 col-mr-auto">
-									<input className="form-input"
-										placeholder="zip"
-										type="zip"
-										name="zip"
-										value={this.state.zip}
-										onChange={this.handleChange}
-									/>
-								</div>
-							</div>
-							<div className="form-group ">
-								{/* <div className="col-"></div> */}
-								<button
-									className="btn btn-primary"
-									onClick={this.handleSubmit}
-									type="submit"
-								>Sign up</button>
-							</div>
-						</form>
-					</div>
+						</div>
+					</Col>
 				</Row>
 			</Container>
 		)

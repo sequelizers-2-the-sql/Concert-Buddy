@@ -20,6 +20,8 @@ import Navbar from "./components/Navigation/Navigation";
 import Landing from "./pages/Landing";
 import "./App.css"
 import ChatApp from './components/ChatApp';
+import About from "./pages/About";
+import Footer from "./components/Footer";
 
 
 // const chatkit = new Chatkit({
@@ -183,8 +185,8 @@ class App extends Component {
 
         </div>
       </Router>
-    );
-  }
-}
-
-export default App;
+        );
+      }
+    }
+    
+    export default App;
