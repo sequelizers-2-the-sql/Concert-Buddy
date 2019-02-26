@@ -53,7 +53,7 @@ removeEvent = (eventId, userId) => {
 
               this.state.concerts.map((event, i) => {
                 return <>
-                  <UserEvents event={event} user={this.state.user._id} removeEvent={this.removeEvent}/>
+                  <UserEvents event={event} lat={this.props.lat} lng={this.props.lng} user={this.state.user._id} removeEvent={this.removeEvent}/>
                   <hr style={{backgroundColor: "whitesmoke"}}></hr>
                 </>
               }) : (

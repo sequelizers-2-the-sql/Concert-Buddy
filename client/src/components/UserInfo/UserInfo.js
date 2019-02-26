@@ -22,7 +22,7 @@ export function UserEvents(props) {
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">On {props.event.date}</li>
                         <li className="list-group-item">At {props.event.time}</li>
-                        <li className="list-group-item">{props.event.attendees.length} buddies attending!</li>
+                        <li className="list-group-item">{props.event.attendees.length - 1} buddies attending!</li>
                         <li className="list-group-item">tidbit about the band? (do we need a new api?)</li>
                         <div className="card-body">
                             <Link to={chatRoomHref} className="card-link">
@@ -37,7 +37,7 @@ export function UserEvents(props) {
                 <div>
                     <div class="card map-card">
                         <div class="card-body">
-                            <Map lat={props.event.latitude} lng={props.event.longitude} />
+                            <Map userlat={props.lat} userlng={props.lng} lat={props.event.latitude} lng={props.event.longitude} />
                         </div>
                     </div>
                 </div>
