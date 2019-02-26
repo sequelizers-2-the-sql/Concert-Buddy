@@ -2,6 +2,7 @@ import React from "react";
 import "./ConcertDetail.css"
 import { Link } from "react-router-dom";
 import Map from '../Map/index.js'
+import DeleteBtn from '../DeleteButton/index'
 import ReadMoreReact from 'read-more-react';
  
 
@@ -32,6 +33,7 @@ export function ConcertDetail(props) {
                         <a href="#" className="card-link">Actually, I'm not interested in this concert</a>                    </div>
                     <div className="card-body">
                         <Link to={chatRoomHref} className="card-link">Find ConcertBuddies</Link>
+                        <DeleteBtn onClick={() => { props.removeEvent(props.userId, { id: props.event._id }) }} />
                     </div>
                 </div>
             </div>
@@ -39,7 +41,7 @@ export function ConcertDetail(props) {
                 <div>
                     <div class="card map-card">
                         <div class="card-body">
-                            <Map />
+                        <Map lat={props.event.latitude} lng={props.event.longitude} />
                         </div>
                     </div>
                 </div>

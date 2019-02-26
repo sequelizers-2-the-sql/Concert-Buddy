@@ -27,13 +27,19 @@ class MyEvents extends Component {
     });
   };
 
+  removeEvent = (userId, eventId) => {
+    API.removeEvent(userId, eventId)
+    .then(res => {console.log(res);
+      window.location.href = "/home/"})
+    .catch(err => console.log(err))
+  };
 
-  render() {
+  render(props) {
     return (<>
       <Container>
         <Row>
           <Col size="md-12">
-            <ConcertDetail event={this.state.event} concert={this.state.concerts}/>
+            <ConcertDetail event={this.state.event} userId={this.props.userId} concert={this.state.concerts} removeEvent={this.removeEvent}/>
           </Col>
         </Row>
       </Container>
