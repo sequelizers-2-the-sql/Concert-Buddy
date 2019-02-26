@@ -8,6 +8,7 @@ import SendMessageForm from "./SendMessageForm";
 //Importing the tokenUrl and instanceLocator from config
 import { tokenUrl, instanceLocator } from "../config";
 import NickName from './NickName';
+import { Container, Row, Col } from "./Container"
 import "./ChatApp.css";
 
 class ChatApp extends Component {
@@ -124,37 +125,44 @@ class ChatApp extends Component {
     render() {
         return (
             <div>
-                <NickName
-
-                />
-
-
-                <div className="chatapp">
+                <div className="container chat-container">
+                    <Row>
+                        <Col size="md-12">
 
 
-                    <MessageList
-                        roomId={this.state.roomId}
-                        messages={this.state.messages}
-                    />
+                            <NickName
 
-                    <NewRoomForm createRoom={this.createRoom} />
-                    <RoomsList
-                        roomId={this.state.roomId}
-                        subscribeToRoom={this.subscribeToRoom}
-                        rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
-                    />
-                    <SendMessageForm
-                        disabled={!this.state.roomId}
-                        sendMessage={this.sendMessage}
-                    />
+                            />
 
 
-                    {/* inverse dataflow ( child to parent)*/}
+                            <div className="chatapp">
+
+
+                                <MessageList
+                                    roomId={this.state.roomId}
+                                    messages={this.state.messages}
+                                />
+
+                                <NewRoomForm createRoom={this.createRoom} />
+                                <RoomsList
+                                    roomId={this.state.roomId}
+                                    subscribeToRoom={this.subscribeToRoom}
+                                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+                                />
+                                <SendMessageForm
+                                    disabled={!this.state.roomId}
+                                    sendMessage={this.sendMessage}
+                                />
+
+
+                                {/* inverse dataflow ( child to parent)*/}
+                            </div>
+                        </Col>
+                    </Row>
                 </div>
+            </div>
+        );
+    }
+}; //class ChatApp extends Component ENDS
 
-                </div>
-                );
-            }
-        }; //class ChatApp extends Component ENDS
-        
-        export default ChatApp;
+export default ChatApp;

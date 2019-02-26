@@ -79,8 +79,8 @@ class Events extends Component {
       <Container>
         <Row>
           <Col size="md-12">
-            <h2 style={{ fontFamily: "'Major Mono Display'", color: "whitesmoke"}}>welcome to ConcertBuddy</h2>
-            <h3 style={{ fontFamily: "'Major Mono Display'", color: "whitesmoke"}}>find your concert</h3>
+            <h1 className="text-center" style={{ fontFamily: "'Major Mono Display'", color: "whitesmoke"}}>welcome to ConcertBuddy</h1>
+            <h3 className="text-center" style={{ fontFamily: "'Major Mono Display'", color: "whitesmoke"}}>find your concert by searching by artist or zip code of the show!</h3>
             <form>
               <Input
                 

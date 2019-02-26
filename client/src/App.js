@@ -22,6 +22,7 @@ import PreNav from "./components/PreNav/PreNav";
 import "./App.css"
 import NickName from './components/NickName';
 import ChatApp from './components/ChatApp';
+import About from "./pages/About";
 
 
 // const chatkit = new Chatkit({
@@ -180,6 +181,11 @@ class App extends Component {
           <Route
             exact path="/chatApp"
             component={ChatApp} 
+          />
+
+          <Route
+            exact path="/about"
+            component={About} 
           />
 
         </div>

@@ -187,3 +187,7 @@ body {
   position: absolute;
   top: 10px;
 }
+
+.chat-container{
+  padding: 2%;
+}

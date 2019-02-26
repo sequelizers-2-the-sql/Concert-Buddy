@@ -1,6 +1,7 @@
 .navbar{
     background-color: #4e606e;
     font-family: 'Major Mono Display', Arial, Helvetica, monospace;
+    border-bottom: 1px whitesmoke solid;
 
 }
 

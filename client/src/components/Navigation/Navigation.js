@@ -13,6 +13,9 @@ export default function Navigation(props) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link logo-nav" href={`/myevents/${props.userId}`}>my events</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link logo-nav" href="/about">about</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link logo-nav" href="/api/users/logout">logout</a>
