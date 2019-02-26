@@ -18,9 +18,7 @@ import Login from "./pages/Login";
 
 import Navbar from "./components/Navigation/Navigation";
 import Landing from "./pages/Landing";
-import PreNav from "./components/PreNav/PreNav";
 import "./App.css"
-import NickName from './components/NickName';
 import ChatApp from './components/ChatApp';
 
 
@@ -30,7 +28,6 @@ import ChatApp from './components/ChatApp';
 // })
 
 
-
 class App extends Component {
   constructor() {
     super()
@@ -38,29 +35,38 @@ class App extends Component {
       loggedIn: false,
       username: null,
       userId: null,
-      //ib for chat 2.17.19
-      currentUsername: '',
-      currentId: '',
-      currentView: 'signup'  //s/b signup
     }
 
-    this.getUser = this.getUser.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
-    this.updateUser = this.updateUser.bind(this)
-    //ib for chat 2.17.19
-    this.changeView = this.changeView.bind(this);
-    //this.createUser = this.createUser.bind(this);
+
   }
 
   componentDidMount() {
     this.getUser()
   }
 
-  updateUser(userObject) {
+  updateUser = (userObject) => {
     this.setState(userObject)
   }
 
-  getUser() {
+  logout = (event) => {
+    event.preventDefault()
+    console.log('logging out')
+    axios.post('api/users/logout').then(response => {
+      console.log(response.data)
+      if (response.status === 200 || response.status === 304) {
+        this.updateUser({
+          loggedIn: false,
+          username: null,
+          userId: null
+        });
+
+      }
+    }).catch(error => {
+      console.error('Logout error', error)
+    })
+  }
+
+  getUser = () => {
     axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
@@ -107,11 +113,6 @@ class App extends Component {
   //     });
   // }
 
-  changeView(view) {
-    this.setState({
-      currentView: view
-    })
-  }
   //ib for chat 2.17.19 end
 
   render() {
@@ -129,16 +130,14 @@ class App extends Component {
 
     //ib for chat end
     return (
-      <Router>
+      <Router >
         <div className="App">
-          {window.location.pathname === '/signup' || window.location.pathname === '/login' || window.location.pathname === '/' ? <PreNav /> : <Navbar userId={this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />}
-
-
-          {/* greet user if logged in: */}
-          {this.state.loggedIn &&
-            <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
-          }
-          {/* Routes to different components */}
+          <Navbar
+            userId={this.state.userId}
+            updateUser={this.updateUser}
+            loggedIn={this.state.loggedIn}
+            logout={this.logout}
+          />
 
           <Route
             exact path="/home"
@@ -173,13 +172,13 @@ class App extends Component {
           />
 
           <Route
-            exact path="/chat"
-            component={NickName}
-          />
-
-          <Route
             exact path="/chatApp"
-            component={ChatApp} 
+            component={(props) => <ChatApp
+              {...props}
+              username={this.state.username}
+              userId={this.state.userId}
+            />}
+
           />
 
         </div>

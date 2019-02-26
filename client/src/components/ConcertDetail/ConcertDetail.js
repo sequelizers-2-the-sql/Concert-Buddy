@@ -1,5 +1,6 @@
 import React from "react";
 import "./ConcertDetail.css"
+import { Link } from "react-router-dom";
 import Map from '../Map/index.js'
 import ReadMoreReact from 'read-more-react';
  
@@ -7,6 +8,10 @@ import ReadMoreReact from 'read-more-react';
 // This file exports the components for the user's information/My Events page
 
 export function ConcertDetail(props) {
+    const chatRoomHref = {
+        pathname: "/chatapp",
+        state: { displayName: props.event.artist }
+    };
     return (<>
         <div className="row">
             <div className="col-md-6">
@@ -26,7 +31,7 @@ export function ConcertDetail(props) {
                     <div className="card-body">
                         <a href="#" className="card-link">Actually, I'm not interested in this concert</a>                    </div>
                     <div className="card-body">
-                        <a href="/chatapp" className="card-link">Find ConcertBuddies</a>
+                        <Link to={chatRoomHref} className="card-link">Find ConcertBuddies</Link>
                     </div>
                 </div>
             </div>

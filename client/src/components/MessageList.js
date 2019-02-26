@@ -45,6 +45,7 @@ export default class MessageList extends Component {
     return (
       <div className="message-list">
         {this.props.messages.map((message, index) => {
+          console.log(message)
           return (
             /* TODO: add user picture*/
             <Message

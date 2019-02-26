@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.55",
+    "@pusher/chatkit-server": "^1.0.6",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
@@ -33,6 +34,8 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-google-maps": "^9.4.5",
     "react-landing-page": "^2.0.2",
     "read-more-react": "^1.0.6",

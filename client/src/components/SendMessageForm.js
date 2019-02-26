@@ -4,6 +4,8 @@ export default class SendMessageForm extends Component {
   state = {
     message: "" //the written message on the ui
   };
+
+ 
   // Eventhandler for onChange
   handleChange = e => {
     this.setState({
