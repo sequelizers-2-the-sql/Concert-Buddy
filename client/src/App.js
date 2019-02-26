@@ -165,9 +165,11 @@ class App extends Component {
           />
           <Route
             exact path="/concerts/:id"
-            component={Concerts}
+            component={(props) => <Concerts
+            {...props}
+            userId={this.state.userId}
+          />}
           />
-
           <Route
             exact path="/"
             component={Landing}
