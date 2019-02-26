@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Container, Row, Col } from '../components/Container';
 import "./Signup.css"
+import geo from '../utils/Geolocation'
 
 class Signup extends Component {
 	constructor() {
@@ -10,7 +11,8 @@ class Signup extends Component {
 		this.state = {
 			username: '',
 			password: '',
-			address: '',
+			address1: '',
+			address2: '',
 			city: '',
 			state: '',
 			zip: '',
@@ -30,26 +32,31 @@ class Signup extends Component {
 		console.log('sign-up handleSubmit, username: ')
 		console.log(this.state.username)
 		event.preventDefault()
-
-		//request to server to add a new username/password
-		axios.post('/api/users/signup  ', {
-			username: this.state.username,
-			password: this.state.password
-		})
-			.then(response => {
+		geo.geoLocate(this.state.address1, this.state.city, this.state.state)
+		.then(res => {
+			let lat = res.data.results[0].geometry.location.lat;
+			let lng = res.data.results[0].geometry.location.lng;
+			axios.post('api/users/signup', {
+				username: this.state.username,
+				password: this.state.password,
+				latitude: lat,
+				longitude: lng,
+			}).then(response => {
 				console.log(response)
 				if (!response.data.error) {
-					console.log('successful signup')
+					console.log('successful signup');
 					window.location.href = "/login"
 				} else {
-					console.log('username already taken')
+					console.log('Username already taken')
 				}
-			}).catch(error => {
-				console.log('signup error: ')
-				console.log(error)
-
 			})
-	}
+		}).catch(error => {
+						console.log('signup error: ')
+			 			console.log(error)
+	})
+}
+	
+
 
 
 	render() {
@@ -91,13 +98,27 @@ class Signup extends Component {
 								</div>
 								<div className="form-group">
 									<div className="col-1 col-ml-auto">
-										<label className="form-label" htmlFor="address">Address: </label>
+										<label className="form-label" htmlFor="address1">Address: </label>
 									</div>
 									<div className="col-3 col-mr-auto">
 										<input className="form-input"
-											placeholder="address"
-											type="address"
-											name="address"
+											placeholder="address1"
+											type="address1"
+											name="address1"
+											value={this.state.address}
+											onChange={this.handleChange}
+										/>
+									</div>
+								</div>
+								<div className="form-group">
+									<div className="col-1 col-ml-auto">
+										<label className="form-label" htmlFor="address2">Address: </label>
+									</div>
+									<div className="col-3 col-mr-auto">
+										<input className="form-input"
+											placeholder="address2"
+											type="address2"
+											name="address2"
 											value={this.state.address}
 											onChange={this.handleChange}
 										/>

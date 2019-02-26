@@ -15,7 +15,6 @@ class MyEvents extends Component {
     API.getConcert(this.props.match.params.id)
       .then(res => {
         this.setState({ event: res.data, concerts: res.data.attendees });
-        console.log(this.state.event.artist)
       })
       .catch(err => console.log(err));
   }
@@ -39,7 +38,7 @@ class MyEvents extends Component {
       <Container>
         <Row>
           <Col size="md-12">
-            <ConcertDetail event={this.state.event} userId={this.props.userId} concert={this.state.concerts} removeEvent={this.removeEvent}/>
+            <ConcertDetail event={this.state.event} lat={this.props.lat} lng={this.props.lng} userId={this.props.userId} concert={this.state.concerts} removeEvent={this.removeEvent}/>
           </Col>
         </Row>
       </Container>

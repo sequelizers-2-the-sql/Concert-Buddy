@@ -9,7 +9,7 @@ const chatkit = require('../../utils/chatKit')
 router.post('/signup', (req, res) => {
     console.log('user signup');
 
-    const { username, password } = req.body
+    const { username, password, latitude, longitude } = req.body
     // ADD VALIDATION
     User.findOne({ username: username }, (err, user) => {
         if (err) {
@@ -23,7 +23,9 @@ router.post('/signup', (req, res) => {
         else {
             const newUser = new User({
                 username: username,
-                password: password
+                password: password,
+                latitude: latitude,
+                longitude: longitude
             })
             newUser.save((err, savedUser) => {
                 if (err) return res.json(err)
@@ -115,7 +117,9 @@ router.put('/:id', (req, res) => {
                     $pull: { attendees: req.params.id }
                 }, {
                     new: true
-                }).then(dbModel => { console.log(dbModel); res.json(dbModel) })
+                }).then(dbModel => { 
+                    res.json(dbModel) 
+                })
         })
         .catch(err => res.json(err))
 })

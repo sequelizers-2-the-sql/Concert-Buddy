@@ -37,6 +37,8 @@ class App extends Component {
       loggedIn: false,
       username: null,
       userId: null,
+      lat: null,
+      lng: null
     }
 
 
@@ -74,18 +76,24 @@ class App extends Component {
       console.log(response.data)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
-
-        this.setState({
-          loggedIn: true,
-          username: response.data.user.username,
-          userId: response.data.user._id
+        axios.get('/api/users/' + response.data.user._id)
+        .then(res => {console.log(res)
+         this.setState({
+           loggedIn: true,
+           username: res.data.username,
+           userId: res.data._id,
+           lat: res.data.latitude,
+           lng: res.data.longitude
         })
-      } else {
+      })
+     } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
           username: null,
-          userId: null
+          userId: null,
+          lat: null,
+          lng: null
         })
       }
     })
@@ -161,13 +169,19 @@ class App extends Component {
           />
           <Route
             exact path="/myevents/:id"
-            component={MyEvents}
+            component={(props) => <MyEvents
+            {...props}
+            lat={this.state.lat}
+            lng={this.state.lng}
+            />}
           />
           <Route
             exact path="/concerts/:id"
             component={(props) => <Concerts
             {...props}
             userId={this.state.userId}
+            lat={this.state.lat}
+            lng={this.state.lng}
           />}
           />
           <Route
