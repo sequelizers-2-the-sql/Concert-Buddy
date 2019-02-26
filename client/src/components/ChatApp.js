@@ -7,11 +7,6 @@ import RoomsList from "./RoomsList";
 import SendMessageForm from "./SendMessageForm";
 //Importing the tokenUrl and instanceLocator from config
 import { tokenUrl, instanceLocator } from "../config";
-<<<<<<< HEAD
-=======
-import NickName from './NickName';
-import { Container, Row, Col } from "./Container"
->>>>>>> 82f9f1e85414309afeda4e8715ce8900c804145a
 import "./ChatApp.css";
 
 class ChatApp extends Component {
