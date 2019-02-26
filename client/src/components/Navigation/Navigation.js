@@ -27,7 +27,7 @@ function Navigation({loggedIn, userId, logout, history}) {
                             logout(event);
                             history.push("/");
                         }}>
-                            logthefuckout
+                            logout
                         </a>
 
                     </li>
