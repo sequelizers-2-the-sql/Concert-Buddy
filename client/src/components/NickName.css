@@ -1,12 +1,12 @@
 .form-container {
   height: 150px;
   border: 1px solid #5E0565;
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
 }
 .form-container h1,label {
   padding: 10px;
   /* background-color: #5E0565; */
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
   font-size: 20px;
   color: white;
   margin: 0;
