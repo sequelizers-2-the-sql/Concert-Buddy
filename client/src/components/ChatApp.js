@@ -8,6 +8,7 @@ import SendMessageForm from "./SendMessageForm";
 //Importing the tokenUrl and instanceLocator from config
 import { tokenUrl, instanceLocator } from "../config";
 import "./ChatApp.css";
+import { Container, Row, Col } from './Container';
 
 class ChatApp extends Component {
     constructor(props) {
@@ -153,42 +154,58 @@ class ChatApp extends Component {
 
     render() {
         return (
-            <div className="chatapp">
+            <Container>
+                <Row>
+                    <Col size="md-12">
+                        <h1 className="text-center" style={{fontFamily: "Major Mono Display", color: "whitesmoke"}}>ConcertBuddy chat</h1>
 
-                <MessageList
-                    roomId={this.state.roomId}
-                    messages={this.state.messages}
-                />
+                        <div className="chatapp">
 
-                <NewRoomForm createRoom={this.createRoom} />
-                <RoomsList
-                    roomId={this.state.roomId}
-                    subscribeToRoom={this.subscribeToRoom}
-                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
-                />
-                <SendMessageForm
-                    disabled={!this.state.roomId}
-                    sendMessage={this.sendMessage}
-                />
+                            <MessageList
+                                roomId={this.state.roomId}
+                                messages={this.state.messages}
+                            />
 
-                                <MessageList
-                                    roomId={this.state.roomId}
-                                    messages={this.state.messages}
-                                />
+                            <NewRoomForm createRoom={this.createRoom} />
+                            <RoomsList
+                                roomId={this.state.roomId}
+                                subscribeToRoom={this.subscribeToRoom}
+                                rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+                            />
+                            <SendMessageForm
+                                disabled={!this.state.roomId}
+                                sendMessage={this.sendMessage}
+                            />
 
-                                <NewRoomForm createRoom={this.createRoom} />
-                                <RoomsList
-                                    roomId={this.state.roomId}
-                                    subscribeToRoom={this.subscribeToRoom}
-                                    rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
-                                />
-                                <SendMessageForm
-                                    disabled={!this.state.roomId}
-                                    sendMessage={this.sendMessage}
-                                />
+                            <MessageList
+                                roomId={this.state.roomId}
+                                messages={this.state.messages}
+                            />
 
-                {/* inverse dataflow ( child to parent)*/}
-            </div>
+                            <NewRoomForm createRoom={this.createRoom} />
+                            <RoomsList
+                                roomId={this.state.roomId}
+                                subscribeToRoom={this.subscribeToRoom}
+                                rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
+                            />
+                            <SendMessageForm
+                                disabled={!this.state.roomId}
+                                sendMessage={this.sendMessage}
+                            />
+<br></br>
+                            {/* inverse dataflow ( child to parent)*/}
+                        </div>
+                        <br></br>
+                        <br></br>
+
+                        <br></br>
+
+                        <br></br>
+
+                    </Col>
+                </Row>
+            </Container>
+
         );
     }
 }; //class ChatApp extends Component ENDS

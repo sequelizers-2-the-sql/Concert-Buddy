@@ -50,7 +50,7 @@ export default class MessageList extends Component {
             /* TODO: add user picture*/
             <Message
               key={index}
-              username= {<font color="red">{message.senderId}</font>}
+              username= {<font color="red" size="4">{message.senderId}</font>}
               //{message.senderId}
               //<font color="red">{message.senderId}</font>
               text={<font color="white">{message.text}</font>}

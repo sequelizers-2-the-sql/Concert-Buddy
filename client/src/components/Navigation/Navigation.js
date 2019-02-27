@@ -3,7 +3,6 @@ import {Link, withRouter} from "react-router-dom";
 import "./Navigation.css";
 
 
-
 function Navigation({loggedIn, userId, logout, history}) {
     return (<div>
         <nav className="navbar navbar-expand-lg navbar-dark">

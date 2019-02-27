@@ -3,6 +3,9 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { Container, Row, Col } from '../components/Container';
 import "./Login.css";
+import { LoginAlert } from "../components/Alert";
+
+let invalid = false;
 class LoginForm extends Component {
     constructor() {
         super()
@@ -44,16 +47,19 @@ class LoginForm extends Component {
                     window.location.href = "/home"
                 }
             }).catch(error => {
-                console.log('login error: ')
+                alert('Try a different username and password combo!')
                 console.log(error);
-
+                invalid = true;
             })
     }
 
     render() {
+
+
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
         } else {
+            if (invalid) { return <LoginAlert /> } 
             return (
                 <Container>
                     <Row>

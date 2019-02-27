@@ -6,7 +6,7 @@ export default class RoomsList extends Component {
     return (
       <div className="rooms-list">
         <ul>
-          <h3><font color="red">Chat Rooms for your Events</font></h3>
+          <h3><font color="whitesmoke">Chat Rooms for your Events</font></h3>
 
           {orderedRooms.map(room => {
             const active = this.props.roomId === room.id ? "active" : "";
