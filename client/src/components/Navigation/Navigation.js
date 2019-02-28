@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {Link, withRouter} from "react-router-dom";
 import "./Navigation.css";
 
@@ -22,7 +22,7 @@ function Navigation({loggedIn, userId, logout, history}) {
                 </li>
                 {loggedIn ? (
                     <li class="nav-item">
-                        <a class="nav-link logo-nav" href="#" onClick={event => {
+                        <a class="nav-link logo-nav" href="/" onClick={event => {
                             logout(event);
                             history.push("/");
                         }}>
