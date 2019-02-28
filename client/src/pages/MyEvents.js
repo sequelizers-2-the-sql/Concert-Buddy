@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Container, Row, Col } from "../components/Container";
-import { List, ListItem } from "../components/EventList";
 import { UserEvents } from "../components/UserInfo/UserInfo";
 class MyEvents extends Component {
   state = {
@@ -52,10 +51,10 @@ removeEvent = (eventId, userId) => {
             {this.state.concerts ?
 
               this.state.concerts.map((event, i) => {
-                return <>
+                return <div key={i}>
                   <UserEvents event={event} lat={this.props.lat} lng={this.props.lng} user={this.state.user._id} removeEvent={this.removeEvent}/>
                   <hr style={{backgroundColor: "whitesmoke"}}></hr>
-                </>
+                </div>
               }) : (
                 <h3>No Results to Display</h3>
               )}

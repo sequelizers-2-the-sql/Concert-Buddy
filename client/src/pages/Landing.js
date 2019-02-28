@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Provider, Heading, Subhead, NavLink, Small } from 'rebass';
+import { Provider, Heading, Subhead } from 'rebass';
 import {
     Hero, Flex, CallToAction, ScrollDownIndicator
 } from 'react-landing-page';

@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
 import { withScriptjs } from "react-google-maps";
 import Map from './Map';
 
 
 const googleMap = (props) => {
   const MapLoader = withScriptjs(Map);
-  {console.log(props)}
   return (
     <MapLoader
       lat={props.lat}
