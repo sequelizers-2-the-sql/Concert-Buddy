@@ -112,10 +112,19 @@ class Signup extends Component {
       errors["state"] = "Please enter 2 letter abbreviation";
     }
 
+	if (typeof fields["state"] !== "undefined" && !fields["state"] === false) {
     if (!fields["state"].match(/^[a-zA-Z]+$/)) {
       formIsValid = false;
       errors["state"] = "Only letters";
-    }
+	}
+}
+
+	if (typeof fields["zip"] !== "undefined" && !fields["zip"] === false) {
+		if (!fields["zip"].match(/^[0-9]+$/)) {
+			formIsValid = false;
+			errors["zip"] = "Only numbers"
+		}
+	}
 
     this.setState({ errors: errors });
     return formIsValid;
