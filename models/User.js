@@ -8,6 +8,8 @@ const userSchema = new Schema({
 
 	username: { type: String, unique: false, required: false },
 	password: { type: String, unique: false, required: false },
+	latitude: { type: Number, unique: false, required: false },
+	longitude: { type: Number, unique: false, required: false },
 	concerts:[
 		{
 			type: Schema.Types.ObjectId,

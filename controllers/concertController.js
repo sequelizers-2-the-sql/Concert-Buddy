@@ -53,6 +53,7 @@ module.exports = {
     findConcert: function(req, res) {
         db.Concert
         .findById(req.params.id)
+        .populate("attendees")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }

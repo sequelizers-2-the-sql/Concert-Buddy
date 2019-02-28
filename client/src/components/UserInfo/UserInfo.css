@@ -1,0 +1,10 @@
+.concert-card, .map-card {
+    /* width: 50% !important; */
+    color: whitesmoke;
+    /* margin: 0 auto; */
+}
+
+.card-text, .list-group-item, .card-title {
+    color: #4e606e;
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.55",
+    "@pusher/chatkit-server": "^1.0.6",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
@@ -27,13 +28,20 @@
     "connect-mongo": "^2.0.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "formik": "^1.5.1",
     "if-env": "^1.0.4",
     "material-ui": "^0.20.2",
     "mongoose": "^5.4.10",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-form-with-constraints": "^0.11.0",
+    "react-google-maps": "^9.4.5",
     "react-landing-page": "^2.0.2",
+    "react-radio-buttons": "^1.2.2",
+    "read-more-react": "^1.0.6",
     "session": "^0.1.0",
     "validator": "^10.11.0"
   }

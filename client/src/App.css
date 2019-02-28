@@ -1,5 +1,6 @@
 body {
   background-image: url("./photos/edwin-pic.jpg");
+  background-attachment: fixed;
   background-size: 100%;
 }
 
@@ -10,4 +11,10 @@ h1, p {
 .container {
   background-color: #4e606e;
   opacity: 0.9;
+  padding: 4%;
+  border: 1px whitesmoke solid;
+}
+
+div.App {
+  height: 100%;
 }

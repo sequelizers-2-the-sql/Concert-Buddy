@@ -18,17 +18,15 @@ import Login from "./pages/Login";
 
 import Navbar from "./components/Navigation/Navigation";
 import Landing from "./pages/Landing";
-import PreNav from "./components/PreNav/PreNav";
 import "./App.css"
-import NickName from './components/NickName';
 import ChatApp from './components/ChatApp';
+import Footer from "./components/Footer";
 
 
 // const chatkit = new Chatkit({
 //   instanceLocator: "v1:us1:bba82808-7449-4f24-a517-a97ac38da58a",
 //   key: "b45deb0b-fb92-473a-86b6-28b3866ae055:BZhEh5QKDNYunYk7GTKn0DZjXaVzTKDuHWXGbmnzTio="
 // })
-
 
 
 class App extends Component {
@@ -38,46 +36,63 @@ class App extends Component {
       loggedIn: false,
       username: null,
       userId: null,
-      //ib for chat 2.17.19
-      currentUsername: '',
-      currentId: '',
-      currentView: 'signup'  //s/b signup
+      lat: null,
+      lng: null
     }
 
-    this.getUser = this.getUser.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
-    this.updateUser = this.updateUser.bind(this)
-    //ib for chat 2.17.19
-    this.changeView = this.changeView.bind(this);
-    //this.createUser = this.createUser.bind(this);
+
   }
 
   componentDidMount() {
     this.getUser()
   }
 
-  updateUser(userObject) {
+  updateUser = (userObject) => {
     this.setState(userObject)
   }
 
-  getUser() {
+  logout = (event) => {
+    event.preventDefault()
+    console.log('logging out')
+    axios.post('api/users/logout').then(response => {
+      console.log(response.data)
+      if (response.status === 200 || response.status === 304) {
+        this.updateUser({
+          loggedIn: false,
+          username: null,
+          userId: null
+        });
+
+      }
+    }).catch(error => {
+      console.error('Logout error', error)
+    })
+  }
+
+  getUser = () => {
     axios.get('/api/users/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
-
-        this.setState({
-          loggedIn: true,
-          username: response.data.user.username,
-          userId: response.data.user._id
+        axios.get('/api/users/' + response.data.user._id)
+        .then(res => {console.log(res)
+         this.setState({
+           loggedIn: true,
+           username: res.data.username,
+           userId: res.data._id,
+           lat: res.data.latitude,
+           lng: res.data.longitude
         })
-      } else {
+      })
+     } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
           username: null,
-          userId: null
+          userId: null,
+          lat: null,
+          lng: null
         })
       }
     })
@@ -107,11 +122,6 @@ class App extends Component {
   //     });
   // }
 
-  changeView(view) {
-    this.setState({
-      currentView: view
-    })
-  }
   //ib for chat 2.17.19 end
 
   render() {
@@ -129,16 +139,14 @@ class App extends Component {
 
     //ib for chat end
     return (
-      <Router>
+      <Router >
         <div className="App">
-          {window.location.pathname === '/signup' || window.location.pathname === '/login' || window.location.pathname === '/' ? <PreNav /> : <Navbar userId={this.state.userId} updateUser={this.updateUser} loggedIn={this.state.loggedIn} />}
-
-
-          {/* greet user if logged in: */}
-          {this.state.loggedIn &&
-            <p>You are logged in, {this.state.username}, userId: {this.state.userId}!!!!</p>
-          }
-          {/* Routes to different components */}
+          <Navbar
+            userId={this.state.userId}
+            updateUser={this.updateUser}
+            loggedIn={this.state.loggedIn}
+            logout={this.logout}
+          />
 
           <Route
             exact path="/home"
@@ -160,32 +168,40 @@ class App extends Component {
           />
           <Route
             exact path="/myevents/:id"
-            component={MyEvents}
+            component={(props) => <MyEvents
+            {...props}
+            lat={this.state.lat}
+            lng={this.state.lng}
+            />}
           />
           <Route
             exact path="/concerts/:id"
-            component={Concerts}
+            component={(props) => <Concerts
+            {...props}
+            userId={this.state.userId}
+            lat={this.state.lat}
+            lng={this.state.lng}
+          />}
           />
-
           <Route
             exact path="/"
             component={Landing}
           />
 
           <Route
-            exact path="/chat"
-            component={NickName}
-          />
-
-          <Route
             exact path="/chatApp"
-            component={ChatApp}
-          />
+            component={(props) => <ChatApp
+              {...props}
+              username={this.state.username}
+              userId={this.state.userId}
+            />}
 
+          />
+          <Footer />
         </div>
       </Router>
-    );
-  }
-}
-
-export default App;
+        );
+      }
+    }
+    
+    export default App;

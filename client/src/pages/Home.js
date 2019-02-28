@@ -7,6 +7,7 @@ import { Input, FormBtn } from "../components/SearchForm";
 import { List, ListItem } from "../components/EventList";
 import RadioButton from "../components/RadioButton";
 import { Container, Row, Col } from "../components/Container";
+// import { RadioGroup, RadioButton } from 'react-radio-buttons';
 class Events extends Component {
   state = {
     events: [],
@@ -74,13 +75,16 @@ class Events extends Component {
 
   render() {
 
-    const listDisplay = this.state.events.length > 0 ?  <List number={this.state.events.length} input={this.state.search} /> : ''
+    const listDisplay = this.state.events.length > 0 ? <List number={this.state.events.length} input={this.state.search} /> : ''
     return (<>
       <Container>
         <Row>
           <Col size="md-12">
+            <h1 className="text-center" style={{ fontFamily: "'Major Mono Display'", color: "whitesmoke" }}>welcome to ConcertBuddy</h1>
+            <h5 className="text-center" style={{ fontFamily: "'Major Mono Display'", color: "whitesmoke" }}>find your concert by searching by artist or zip code of the show!</h5>
             <form>
               <Input
+
                 value={this.state.search}
                 onChange={this.handleInputChange}
                 name="search"
@@ -92,6 +96,17 @@ class Events extends Component {
                 artist={this.state.selector === "Artist"}
                 change={this.handleRadioChange}
               />
+
+              {/* <RadioGroup onChange={this.handleRadioChange} horizontal>
+                <RadioButton value={this.state.selector === "Zip"}>
+                  Zip Code </RadioButton>
+                <RadioButton value={this.state.selector === "Artist"}>
+                  Artist </RadioButton>
+              </RadioGroup> */}
+
+
+
+
               <FormBtn
                 disabled={!(this.state.search)}
                 onClick={this.handleFormSubmit}
@@ -105,11 +120,10 @@ class Events extends Component {
             {this.state.events ?
 
               this.state.events.map((event, i) => {
-                return <>
-
-                  <ListItem event={event} clickHandler={this.attendEvent} key={i} />
-                </>
-              }) : !this.state.searched (
+                return <div key={i}>
+                  <ListItem event={event} clickHandler={this.attendEvent} key={event.id} />
+                </div>
+              }) : !this.state.searched(
                 <h3>No Results to Display</h3>
               )}
           </Col>
