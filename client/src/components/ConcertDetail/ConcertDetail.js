@@ -31,7 +31,7 @@ export class ConcertDetail extends Component {
                         </div>
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">On <Moment format="MM-DD-YYYY">{this.props.event.date}</Moment></li>
-                            <li className="list-group-item">At <Moment format="HH:mm">{this.props.event.time}</Moment></li>
+                            <li className="list-group-item">At {this.props.event.time}</li>
                             <li className="list-group-item">{this.props.concert.length - 1} buddies attending!</li>
 
                         </ul>
