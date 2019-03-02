@@ -120,10 +120,9 @@ class Events extends Component {
             {this.state.events ?
 
               this.state.events.map((event, i) => {
-                return <>
-
-                  <ListItem event={event} clickHandler={this.attendEvent} key={i} />
-                </>
+                return <div key={i}>
+                  <ListItem event={event} clickHandler={this.attendEvent} key={event.id} />
+                </div>
               }) : !this.state.searched(
                 <h3>No Results to Display</h3>
               )}

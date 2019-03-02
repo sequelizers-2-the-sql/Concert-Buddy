@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client';
-import Input from './ChatInput';
 import MessageList from './MessageList';
 import NewRoomForm from "./NewRoomForm";
 import RoomsList from "./RoomsList";
@@ -16,7 +15,7 @@ class ChatApp extends Component {
         this.state = {
             currentUser: null,
             currentRoom: { users: [] },
-            messages: [],
+           // messages: [],
             users: [],
             //2/22/19 enhancements ib
             roomId: null, //room.id isn't defined till we subscribe/join a room
