@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Container, Row, Col } from "../components/Container";
-import { List, ListItem } from "../components/EventList";
 import { UserEvents } from "../components/UserInfo/UserInfo";
 class MyEvents extends Component {
   state = {

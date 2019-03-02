@@ -10,7 +10,6 @@ class MyEvents extends Component {
     concerts: []
   };
 
-
   componentDidMount() {
     API.getConcert(this.props.match.params.id)
       .then(res => {

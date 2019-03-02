@@ -63,7 +63,8 @@ class Signup extends Component {
 		return (
 			<Container>
 				<Row>
-					<Col size="md-6">
+					<Col size="md-1"></Col>
+					<Col size="md-4">
 						<div className="SignupForm">
 							<h1 style={{ fontFamily: "Major Mono Display" }}>Sign Up</h1>
 							<form className="form-horizontal">
@@ -178,7 +179,7 @@ class Signup extends Component {
 						</div>
 					</Col>
 
-					<Col size="md-6">
+					<Col size="md-7">
 						<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
 								<div class="carousel-item active" data-interval="10000">

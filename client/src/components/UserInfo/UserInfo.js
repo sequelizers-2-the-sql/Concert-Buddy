@@ -1,8 +1,10 @@
 import React from "react";
-import "./UserInfo.css"
+import "./UserInfo.css";
 import { Link } from "react-router-dom";
-import Map from '../Map/index.js'
-import DeleteBtn from '../DeleteButton/index.js'
+import Map from '../Map/index.js';
+import DeleteBtn from '../DeleteButton/index.js';
+import Moment from "react-moment";
+
 
 // This file exports the components for the user's information/My Events page
 
@@ -20,10 +22,9 @@ export function UserEvents(props) {
                         <p className="card-text font-italic">{props.event.venue} in {props.event.city}</p>
                     </div>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item">On {props.event.date}</li>
-                        <li className="list-group-item">At {props.event.time}</li>
+                        <li className="list-group-item">Date: <Moment format="MM-DD-YYYY">{props.event.date}</Moment></li>
+                        <li className="list-group-item">Time: {props.event.time}</li>
                         <li className="list-group-item">{props.event.attendees.length - 1} buddies attending!</li>
-                        <li className="list-group-item">tidbit about the band? (do we need a new api?)</li>
                         <div className="card-body">
                             <Link to={chatRoomHref} className="card-link">
                                 Find ConcertBuddies

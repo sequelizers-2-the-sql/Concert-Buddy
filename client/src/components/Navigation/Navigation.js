@@ -12,7 +12,17 @@ function Navigation({loggedIn, userId, logout, history}) {
             <ul class="nav nav-pills">
 
                
+                {/* <li class="nav-item">
+                    <Link class="nav-link logo-nav" to="/home">home</Link>
+                </li>
                 <li class="nav-item">
+                    <Link class="nav-link logo-nav" to={`/myevents/${userId}`}>
+                        my events
+                    </Link>
+                </li> */}
+                {loggedIn ? (
+                    <>
+                    <li class="nav-item">
                     <Link class="nav-link logo-nav" to="/home">home</Link>
                 </li>
                 <li class="nav-item">
@@ -20,7 +30,6 @@ function Navigation({loggedIn, userId, logout, history}) {
                         my events
                     </Link>
                 </li>
-                {loggedIn ? (
                     <li class="nav-item">
                         <a class="nav-link logo-nav" href="#" onClick={event => {
                             logout(event);
@@ -29,14 +38,15 @@ function Navigation({loggedIn, userId, logout, history}) {
                             logout
                         </a>
 
-                    </li>
+                        </li>
+                        </>
                 ) : (
                         <>
-                            <Link to="/login" className="btn btn-link text-secondary">
-                                <span className="text-secondary">login</span>
+                            <Link style={{color: "whitesmoke"}} to="/login" className="btn btn-link">
+                                <span>login</span>
                             </Link>
-                            <Link to="/signup" className="btn btn-link">
-                                <span className="text-secondary">sign up</span>
+                            <Link style={{color: "whitesmoke"}}  to="/signup" className="btn btn-link">
+                                <span>sign up</span>
                             </Link>
                         </>
                     )}

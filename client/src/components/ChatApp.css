@@ -80,8 +80,8 @@ body {
   text-decoration: none;
 }
 
-.rooms-list .room.active a {
-  color: var(--secondary-color);
+li.room.active a {
+  color: gold;
 }
 
 .new-room-form {
