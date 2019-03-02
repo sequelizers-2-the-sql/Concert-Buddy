@@ -56,7 +56,7 @@ class Landing extends Component {
                     bgOpacity={0.5}
                 >
                     <Heading
-                        font='Major Mono Display'
+                       font='Major Mono Display'
                         fontSize={72}
                     >
                         ConcertBuddy
