@@ -42,6 +42,10 @@ app.use(passport.session()) // calls the deserializeUser
 
 // Routes
 app.use(routes);
+app.get("/api/bla/:artist", (req, res) => {
+	axios.get("https://www.bandsintown.com/" + req.params.artist)
+		.then(({ data }) => res.send(data));
+});
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

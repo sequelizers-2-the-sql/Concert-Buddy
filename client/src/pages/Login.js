@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { Container, Row, Col } from '../components/Container';
 import "./Login.css";
-import { LoginAlert } from "../components/Alert";
 
 let invalid = false;
 class LoginForm extends Component {
@@ -47,23 +46,18 @@ class LoginForm extends Component {
                     window.location.href = "/home"
                 }
             }).catch(error => {
-                alert('Try a different username and password combo!')
+                // alert('Try a different username and password combo!')
                 console.log(error);
                 invalid = true;
             })
     }
 
     render() {
-
-
-        if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
-        } else {
-            if (invalid) { return <LoginAlert /> } 
             return (
                 <Container>
                     <Row>
-                        <Col size="md-6">
+                        <Col size="md-1"></Col>
+                        <Col size="md-4">
                             <div className="loginForm">
                                 <h1 style={{ fontFamily: "Major Mono Display" }}>Login</h1>
                                 <form className="form-horizontal">
@@ -107,7 +101,7 @@ class LoginForm extends Component {
                                 </form>
                             </div>
                         </Col>
-                        <Col size="md-6">
+                        <Col size="md-7">
                             <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active" data-interval="10000">
@@ -150,6 +144,5 @@ class LoginForm extends Component {
             )
         }
     }
-};
 
 export default LoginForm;

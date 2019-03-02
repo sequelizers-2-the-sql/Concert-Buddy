@@ -112,10 +112,19 @@ class Signup extends Component {
       errors["state"] = "Please enter 2 letter abbreviation";
     }
 
+	if (typeof fields["state"] !== "undefined" && !fields["state"] === false) {
     if (!fields["state"].match(/^[a-zA-Z]+$/)) {
       formIsValid = false;
       errors["state"] = "Only letters";
-    }
+	}
+}
+
+	if (typeof fields["zip"] !== "undefined" && !fields["zip"] === false) {
+		if (!fields["zip"].match(/^[0-9]+$/)) {
+			formIsValid = false;
+			errors["zip"] = "Only numbers"
+		}
+	}
 
     this.setState({ errors: errors });
     return formIsValid;
@@ -125,7 +134,8 @@ class Signup extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-6">
+          <Col size ="md-1"></Col>
+          <Col size="md-4">
             <div className="SignupForm">
               <h1 style={{ fontFamily: "Major Mono Display" }}>Sign Up</h1>
               <form onSubmit={this.handleSubmit.bind(this)} method="POST">
@@ -235,7 +245,7 @@ class Signup extends Component {
             </div>
           </Col>
 
-          <Col size="md-6">
+          <Col size="md-7">
             <div
               id="carouselExampleInterval"
               class="carousel slide"
