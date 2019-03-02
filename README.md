@@ -26,14 +26,14 @@ SongKick API
 
 
 ## Authors
-# Andrew Andersen
-# Rich Coleman
-# Isaac Bayon
+Andrew Andersen
+Rich Coleman
+Isaac Bayon
 
 ## License
 This project is licensed under the ARI License - see the LICENSE.md file for details
 
 ## Acknowledgments
-# Hat tip to anyone whose code was used
-# Thanks Rich H for a great class!
-# Thanks Jake and David for always helping us out!
+* Hat tip to anyone whose code was used
+* Thanks Rich H for a great class!
+* Thanks Jake and David for always helping us out!
