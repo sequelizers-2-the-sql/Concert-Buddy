@@ -6,17 +6,17 @@ Luckily, you've got ConcertBuddy. Just sign up and join the social network for p
 
 So what are you waiting for? Find your ConcertBuddy.
 
-##Getting Started
+## Getting Started
 1. Clone the repo
 2. npm install
 3. npm runstart
 
-##Prerequisites
+## Prerequisites
 You will need a chatkit account which you can create here: https://pusher.com/chatkit
 
 Add your chatkit information to the config file (src/config.js)
 
-##Built With
+## Built With
 React
 MongoDB
 Chatkit
@@ -25,15 +25,15 @@ Passport js (with sesions)
 SongKick API
 
 
-Authors
-Andrew Andersen
-Rich Coleman
-Isaac Bayon
+## Authors
+# Andrew Andersen
+# Rich Coleman
+# Isaac Bayon
 
-License
+## License
 This project is licensed under the ARI License - see the LICENSE.md file for details
 
-Acknowledgments
-Hat tip to anyone whose code was used
-Thanks Rich H for a great class!
-Thanks Jake and David for always helping us out!
+## Acknowledgments
+# Hat tip to anyone whose code was used
+# Thanks Rich H for a great class!
+# Thanks Jake and David for always helping us out!
